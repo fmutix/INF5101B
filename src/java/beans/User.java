@@ -41,14 +41,7 @@ public class User {
         }
     }
     
-    public String save() {
-        try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-        } catch (ClassNotFoundException cnfe) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, cnfe);
-            return null;
-        }
-        
+    public String save() throws ClassNotFoundException, SQLException {
         String query = "INSERT INTO SUPP_REQUEST values (" +
            "'" + firstName + "'," +
            "'" + lastName + "'," +
@@ -59,18 +52,13 @@ public class User {
            "'" + issue + "'" +
         ")";
         
-        try {
-            Connection c = DriverManager.getConnection(
-                    "jdbc:derby://localhost:1527/hotline", 
-                    "test", "test"
-            );
-            
-            java.sql.Statement insertStatement = c.createStatement();
-            insertStatement.executeUpdate(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
+        Connection c = DriverManager.getConnection(
+            "jdbc:derby://localhost:1527/hotline",
+            "test", "test"
+        );
+
+        java.sql.Statement insertStatement = c.createStatement();
+        insertStatement.executeUpdate(query);
         
         return "summary";
     }
