@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+    <ui:composition>
+        <div class="error">
+            <h:messages/>
+        </div>
+        
+        <h:form>
+            <f:event listener="#{user.validateSoftwareOS}" 
+                     type="postValidate" />
+            
+            <h:panelGrid columns="2">                
+                <h:outputLabel for="firstName">
+                    #{msgSup.userFirstName}: 
+                </h:outputLabel>
+                <h:inputText id="firstName" label="#{msgSup.userFirstName}"
+                             value="#{user.firstName}" required="true">
+                    <f:validateRegex pattern="[a-zA-Z]+" />
+                </h:inputText>
+                
+                <h:outputLabel for="lastName">
+                    #{msgSup.userLastName}: 
+                </h:outputLabel>
+                <h:inputText id="lastName" label="#{msgSup.userLastName}" 
+                             value="#{user.lastName}" required="true">
+                    <f:validateRegex pattern="[a-zA-Z]+" />
+                </h:inputText>
+                
+                <h:outputLabel for="email">
+                    #{msgSup.userEmail}:
+                </h:outputLabel>
+                <h:inputText id="email" label="#{msgSup.userEmail}" 
+                             value="#{user.email}" required="true"/>
+                
+                <h:outputLabel for="phone">
+                    #{msgSup.userPhone}:
+                </h:outputLabel>
+                <h:inputText id="phone" label="#{msgSup.userPhone}" 
+                             value="#{user.phone}" required="true">
+                    <f:validateRegex pattern="\d+" />
+                </h:inputText>
+                
+                <h:outputLabel for="software">
+                    #{msgSup.userSoftware}:
+                </h:outputLabel>
+                <h:selectOneMenu id="software" label="#{msgSup.userSoftware}"
+                                 value="#{user.software}" required="true">
+                    <f:selectItem itemLabel="Microsoft Word"
+                                  itemValue="Microsoft Word"/>
+                    <f:selectItem itemLabel="Libreoffice Writer"
+                                  itemValue="Libreoffice Writer"/>
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="os">
+                    #{msgSup.userOs}:
+                </h:outputLabel>
+                <h:selectOneMenu id="os" label="#{msgSup.userOs}"
+                                 value="#{user.os}" required="true">
+                    <f:selectItem itemLabel="Linux" itemValue="Linux"/>
+                    <f:selectItem itemLabel="Windows" itemValue="Windows"/>
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="issue">
+                    #{msgSup.userIssue}:
+                </h:outputLabel>
+                <h:inputTextarea id="issue" label="#{msgSup.userIssue}"
+                                 value="#{user.issue}" required="true"/>
+                
+                <f:facet name="footer">
+                    <h:commandButton value="#{msg.send}" action="#{user.save()}"/>
+                </f:facet>
+            </h:panelGrid>
+        </h:form>
+    </ui:composition>
+    </h:body>
+</html>
+
