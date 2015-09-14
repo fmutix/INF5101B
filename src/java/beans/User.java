@@ -41,7 +41,7 @@ public class User {
         }
     }
     
-    public String save() throws UnavailableException, SQLException {
+    public String save() {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
         } catch (ClassNotFoundException cnfe) {
@@ -58,9 +58,6 @@ public class User {
            "'" + os + "'," +
            "'" + issue + "'" +
         ")";
-        
-        Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, software);
-        Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, os);
         
         try {
             Connection c = DriverManager.getConnection(
