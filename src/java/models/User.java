@@ -2,6 +2,7 @@ package models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -41,25 +42,26 @@ public class User {
     public String save() throws ClassNotFoundException, SQLException {
         Class.forName("org.apache.derby.jdbc.ClientDriver");
 
-        String query = "INSERT INTO Users "
-                + "(FirstName, LastName, Email, Phone, Software, Os, Issue) "
-                + "values (" +
-           "'" + firstName + "'," +
-           "'" + lastName + "'," +
-           "'" + email + "'," +
-           "'" + phone + "'," +
-           "'" + software + "'," +
-           "'" + os + "'," +
-           "'" + issue + "'" +
-        ")";
-        
         Connection c = DriverManager.getConnection(
             "jdbc:derby://localhost:1527/hotline",
             "test", "test"
         );
 
+        PreparedStatement query = c.prepareStatement(
+            "INSERT INTO Users" +
+            "(FirstName, LastName, Email, Phone, Software, Os, Issue) " +
+            "Values (?, ?, ?, ?, ?, ?, ?)"
+        );
+
         java.sql.Statement insertStatement = c.createStatement();
-        insertStatement.executeUpdate(query);
+        query.setString(1, firstName);
+        query.setString(2, lastName);
+        query.setString(3, email);
+        query.setString(4, phone);
+        query.setString(5, software);
+        query.setString(6, os);
+        query.setString(7, issue);
+        query.executeUpdate();
         
         return "summary";
     }
