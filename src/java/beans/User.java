@@ -1,13 +1,82 @@
 package beans;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
+import javax.servlet.UnavailableException;
 
 @ManagedBean
 @RequestScoped
 public class User {
-
+    
     private String firstName, lastName, email, phone, software, os, issue;
+    
+    public void validateSoftwareOS(ComponentSystemEvent event) {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        UIComponent components = event.getComponent();
+        
+        UIInput softwareInput = (UIInput) components.findComponent("software");
+        UIInput osInput = (UIInput) components.findComponent("os");
+        
+        String software_ = softwareInput.getLocalValue().toString();
+        String os_ = osInput.getLocalValue().toString();
+        
+        if (software_.equals("Microsoft Word") && os_.equals("Linux")) {
+            FacesMessage errorMsg = new FacesMessage(
+                FacesMessage.SEVERITY_ERROR,
+                "This software cannot be used with this OS.", 
+                null
+            );
+            fc.addMessage("software", errorMsg);
+            fc.renderResponse();
+        }
+    }
+    
+    public String save() throws UnavailableException, SQLException {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+        } catch (ClassNotFoundException cnfe) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, cnfe);
+            return null;
+        }
+        
+        String query = "INSERT INTO SUPP_REQUEST values (" +
+           "'" + firstName + "'," +
+           "'" + lastName + "'," +
+           "'" + email + "'," +
+           "'" + phone + "'," +
+           "'" + software + "'," +
+           "'" + os + "'," +
+           "'" + issue + "'" +
+        ")";
+        
+        Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, software);
+        Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, os);
+        
+        try {
+            Connection c = DriverManager.getConnection(
+                    "jdbc:derby://localhost:1527/hotline", 
+                    "test", "test"
+            );
+            
+            java.sql.Statement insertStatement = c.createStatement();
+            insertStatement.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+        return "summary";
+    }
 
     public String getFirstName() { return firstName; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
@@ -29,5 +98,4 @@ public class User {
 
     public String getIssue() { return issue; }
     public void setIssue(String issue) { this.issue = issue; }
-    
 }
