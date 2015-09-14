@@ -41,7 +41,9 @@ public class User {
     public String save() throws ClassNotFoundException, SQLException {
         Class.forName("org.apache.derby.jdbc.ClientDriver");
 
-        String query = "INSERT INTO SUPP_REQUEST values (" +
+        String query = "INSERT INTO Users "
+                + "(FirstName, LastName, Email, Phone, Software, Os, Issue) "
+                + "values (" +
            "'" + firstName + "'," +
            "'" + lastName + "'," +
            "'" + email + "'," +
