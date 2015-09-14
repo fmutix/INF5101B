@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Technical Support</title>
+    </h:head>
+    
+    <h:body>
+        <h1>Technical Support</h1>
+        
+        <hr/>
+        
+        <h:form>
+            <h:messages/>
+            
+            <div>
+                <h:outputLabel for="firstName">First Name: </h:outputLabel>
+                <h:inputText id="firstName" label="First Name"
+                             value="#{user.firstName}" required="true"/>
+            </div>
+            
+            <div>
+                <h:outputLabel for="lastName">Last Name: </h:outputLabel>
+                <h:inputText id="lastName" label="Last Name"
+                             value="#{user.lastName}" required="true"/>
+            </div>
+            
+            <div>
+                <h:outputLabel for="email">Email: </h:outputLabel>
+                <h:inputText id="email" label="Email"
+                             value="#{user.email}" required="true"/>
+            </div>
+            
+            <div>
+                <h:outputLabel for="phone">Phone: </h:outputLabel>
+                <h:inputText id="phone" label="Phone"
+                             value="#{user.phone}"/>
+            </div>
+            
+            <div>
+                <h:outputLabel for="software">Software: </h:outputLabel>
+                <h:selectOneMenu id="software" label="Software">
+                    <f:selectItem itemLabel="Libreoffice Calc"
+                                  itemValue="Libreoffice Calc"/>
+                    <f:selectItem itemLabel="Libreoffice Writer"
+                                  itemValue="Libreoffice Writer"/>
+                </h:selectOneMenu>
+            </div>
+            
+            <div>
+                <h:outputLabel for="os">OS: </h:outputLabel>
+                <h:selectOneMenu id="os" label="OS">
+                    <f:selectItem itemLabel="Linux" itemValue="Linux"/>
+                    <f:selectItem itemLabel="Windows" itemValue="Windows"/>
+                </h:selectOneMenu>
+            </div>
+            
+            <div>
+                <h:outputLabel for="issue">Issue: </h:outputLabel>
+                <h:inputTextarea id="issue" label="Issue"
+                                 value="#{user.issue}" required="true"/>
+            </div>
+            
+            <hr/>
+            
+            <h:commandButton value="Send" action="summary"/>
+        </h:form>
+    </h:body>
+</html>
