@@ -7,22 +7,22 @@
     <f:loadBundle basename="resources.support" var="msgSup"/>
     
     <h:head>
-        <title>#{msgSup.title} - #{msgSup.summarySubtitle}</title>
+        <title>#{msg.title} - #{msg.summaryTitle}</title>
     </h:head>
     <h:body>
-        <h1>#{msgSup.title} - #{msgSup.summarySubtitle}</h1>
+        <h1>#{msg.title} - #{msg.summaryTitle}</h1>
         
         <p>
-            #{msgSup.userFirstName}: #{user.firstName}<br/>
-            #{msgSup.userLastName}: #{user.lastName}<br/>
-            #{msgSup.userEmail}: #{user.email}<br/>
-            #{msgSup.userPhone}: #{user.phone}<br/>
-            #{msgSup.userSoftware}: #{user.software}<br/>
-            #{msgSup.userOs}: #{user.os}<br/>
-            #{msgSup.userIssue}: #{user.issue}<br/>
+            #{msg.userFirstName}: #{user.firstName}<br/>
+            #{msg.userLastName}: #{user.lastName}<br/>
+            #{msg.userEmail}: #{user.email}<br/>
+            #{msg.userPhone}: #{user.phone}<br/>
+            #{msg.userSoftware}: #{user.software}<br/>
+            #{msg.userOs}: #{user.os}<br/>
+            #{msg.userIssue}: #{user.issue}<br/>
         </p>
         
-        <p>#{msgSup.summaryThanks}</p>
+        <p>#{msg.summaryThanks}</p>
         
     </h:body>
 </html>

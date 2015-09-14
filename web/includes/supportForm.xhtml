@@ -16,39 +16,39 @@
             
             <h:panelGrid columns="2">                
                 <h:outputLabel for="firstName">
-                    #{msgSup.userFirstName}: 
+                    #{msg.userFirstName}:
                 </h:outputLabel>
-                <h:inputText id="firstName" label="#{msgSup.userFirstName}"
+                <h:inputText id="firstName" label="#{msg.userFirstName}"
                              value="#{user.firstName}" required="true">
                     <f:validateRegex pattern="[a-zA-Z]+" />
                 </h:inputText>
                 
                 <h:outputLabel for="lastName">
-                    #{msgSup.userLastName}: 
+                    #{msg.userLastName}:
                 </h:outputLabel>
-                <h:inputText id="lastName" label="#{msgSup.userLastName}" 
+                <h:inputText id="lastName" label="#{msg.userLastName}"
                              value="#{user.lastName}" required="true">
                     <f:validateRegex pattern="[a-zA-Z]+" />
                 </h:inputText>
                 
                 <h:outputLabel for="email">
-                    #{msgSup.userEmail}:
+                    #{msg.userEmail}:
                 </h:outputLabel>
-                <h:inputText id="email" label="#{msgSup.userEmail}" 
+                <h:inputText id="email" label="#{msg.userEmail}"
                              value="#{user.email}" required="true"/>
                 
                 <h:outputLabel for="phone">
-                    #{msgSup.userPhone}:
+                    #{msg.userPhone}:
                 </h:outputLabel>
-                <h:inputText id="phone" label="#{msgSup.userPhone}" 
+                <h:inputText id="phone" label="#{msg.userPhone}"
                              value="#{user.phone}" required="true">
                     <f:validateRegex pattern="\d+" />
                 </h:inputText>
                 
                 <h:outputLabel for="software">
-                    #{msgSup.userSoftware}:
+                    #{msg.userSoftware}:
                 </h:outputLabel>
-                <h:selectOneMenu id="software" label="#{msgSup.userSoftware}"
+                <h:selectOneMenu id="software" label="#{msg.userSoftware}"
                                  value="#{user.software}" required="true">
                     <f:selectItem itemLabel="Microsoft Word"
                                   itemValue="Microsoft Word"/>
@@ -57,18 +57,18 @@
                 </h:selectOneMenu>
                 
                 <h:outputLabel for="os">
-                    #{msgSup.userOs}:
+                    #{msg.userOs}:
                 </h:outputLabel>
-                <h:selectOneMenu id="os" label="#{msgSup.userOs}"
+                <h:selectOneMenu id="os" label="#{msg.userOs}"
                                  value="#{user.os}" required="true">
                     <f:selectItem itemLabel="Linux" itemValue="Linux"/>
                     <f:selectItem itemLabel="Windows" itemValue="Windows"/>
                 </h:selectOneMenu>
                 
                 <h:outputLabel for="issue">
-                    #{msgSup.userIssue}:
+                    #{msg.userIssue}:
                 </h:outputLabel>
-                <h:inputTextarea id="issue" label="#{msgSup.userIssue}"
+                <h:inputTextarea id="issue" label="#{msg.userIssue}"
                                  value="#{user.issue}" required="true"/>
                 
                 <f:facet name="footer">
