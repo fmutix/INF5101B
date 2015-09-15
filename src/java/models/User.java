@@ -1,20 +1,21 @@
 package models;
 
 import controllers.DB;
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class User {
 
     private String firstName, lastName, email, phone, software, os, issue;
@@ -61,6 +62,18 @@ public class User {
         return "summary";
     }
 
+    /**
+     * Redirects the user to the login page if he is not logged in yet.
+     * @throws java.io.IOException
+     */
+    public void loginRedirect() throws IOException {
+        if (!isLogged()) {
+            ExternalContext ec = FacesContext.getCurrentInstance()
+                .getExternalContext();
+            ec.redirect("login.xhtml");
+        }
+    }
+
     public String getFirstName() { return firstName; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
 
@@ -81,4 +94,6 @@ public class User {
 
     public String getIssue() { return issue; }
     public void setIssue(String issue) { this.issue = issue; }
+
+    public boolean isLogged() { return firstName != null; }
 }
