@@ -17,6 +17,8 @@ public class User {
 
     private int id;
     private String firstName, lastName, email, phone;
+    
+    public User() {}
 
     /**
      * Redirects the user to the login page if he is not logged in yet.

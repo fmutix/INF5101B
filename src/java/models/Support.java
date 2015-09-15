@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
@@ -16,6 +17,9 @@ import javax.faces.event.ComponentSystemEvent;
 @RequestScoped
 public class Support {
     
+    @ManagedProperty(value = "#{user}")
+    private User user;
+
     private String software, os, issue;
 
     public void validateSoftwareOS(ComponentSystemEvent event) {
@@ -39,7 +43,7 @@ public class Support {
         }
     }
 
-    public String save(User user) throws ClassNotFoundException, SQLException {
+    public String save() throws ClassNotFoundException, SQLException {
         Connection c = DB.getConnection();
 
         PreparedStatement query = c.prepareStatement(
@@ -56,6 +60,8 @@ public class Support {
 
         return "summary";
     }
+    
+    public void setUser(User user) { this.user = user; }
     
     public String getSoftware() { return software; }
     public void setSoftware(String software) { this.software = software; }
