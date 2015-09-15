@@ -1,4 +1,4 @@
-CREATE TABLE Users
+CREATE TABLE Accounts
 (
     Id INT 
         NOT NULL 

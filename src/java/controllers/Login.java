@@ -10,14 +10,14 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import models.User;
+import models.Account;
 
 @ManagedBean
 @RequestScoped
 public class Login {
     
-    @ManagedProperty(value = "#{user}")
-    private User user;
+    @ManagedProperty(value = "#{account}")
+    private Account account;
     
     /**
      * Redirects the user to the login page if he is not logged in yet.
@@ -36,18 +36,18 @@ public class Login {
 
         PreparedStatement query = c.prepareStatement(
             "SELECT Id, FirstName, LastName, Email, Phone " +
-            "FROM Users " +
+            "FROM Accounts " +
             "WHERE Email = ?"
         );
 
-        query.setString(1, user.getEmail());
+        query.setString(1, account.getEmail());
 
         ResultSet rs = query.executeQuery();
         rs.next();
-        user.setId(rs.getInt("Id"));
-        user.setFirstName(rs.getString("FirstName"));
-        user.setLastName(rs.getString("LastName"));
-        user.setPhone("Phone");
+        account.setId(rs.getInt("Id"));
+        account.setFirstName(rs.getString("FirstName"));
+        account.setLastName(rs.getString("LastName"));
+        account.setPhone("Phone");
 
         return "index";
     }
@@ -60,7 +60,7 @@ public class Login {
         return "index?faces-redirect=true";
     }
     
-    public void setUser(User user) { this.user = user; }
-    public boolean isLogged() { return user.getFirstName() != null; }
+    public void setAccount(Account account) { this.account = account; }
+    public boolean isLogged() { return account.getFirstName() != null; }
     
 }

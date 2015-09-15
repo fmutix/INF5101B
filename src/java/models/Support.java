@@ -17,8 +17,8 @@ import javax.faces.event.ComponentSystemEvent;
 @RequestScoped
 public class Support {
     
-    @ManagedProperty(value = "#{user}")
-    private User user;
+    @ManagedProperty(value = "#{account}")
+    private Account account;
 
     private String software, os, issue;
 
@@ -48,20 +48,20 @@ public class Support {
 
         PreparedStatement query = c.prepareStatement(
             "INSERT INTO Support" +
-            "(Software, Os, Issue, UserId) " +
+            "(Software, Os, Issue, AccountId) " +
             "Values (?, ?, ?, ?)"
         );
 
         query.setString(1, software);
         query.setString(2, os);
         query.setString(3, issue);
-        query.setInt(4, user.getId());
+        query.setInt(4, account.getId());
         query.executeUpdate();
 
         return "summary";
     }
     
-    public void setUser(User user) { this.user = user; }
+    public void setAccount(Account account) { this.account = account; }
     
     public String getSoftware() { return software; }
     public void setSoftware(String software) { this.software = software; }

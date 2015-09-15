@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class User {
+public class Account {
 
     private int id;
     private String firstName, lastName, email, phone;
@@ -19,7 +19,7 @@ public class User {
         Connection c = DB.getConnection();
 
         PreparedStatement query = c.prepareStatement(
-            "INSERT INTO Users" +
+            "INSERT INTO Accounts" +
             "(FirstName, LastName, Email, Phone) " +
             "Values (?, ?, ?, ?)"
         );
@@ -41,7 +41,7 @@ public class User {
         Connection c = DB.getConnection();
 
         PreparedStatement query = c.prepareStatement(
-            "SELECT Id FROM Users WHERE Email = ?"
+            "SELECT Id FROM Accounts WHERE Email = ?"
         );
 
         query.setString(1, email);

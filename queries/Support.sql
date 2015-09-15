@@ -8,5 +8,5 @@ CREATE TABLE Support
     Software VARCHAR(200),
     Os VARCHAR(200),
     Issue VARCHAR(200),
-    UserId INT REFERENCES Users(Id)
+    AccountId INT REFERENCES Accounts(Id)
 )

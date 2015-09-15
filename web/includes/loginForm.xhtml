@@ -14,10 +14,10 @@
         <h:form>
             <h:panelGrid columns="2">
                 <h:outputLabel for="email">
-                    #{msg.userEmail}:
+                    #{msg.accountEmail}:
                 </h:outputLabel>
-                <h:inputText id="email" label="#{msg.userEmail}"
-                             value="#{user.email}" required="true"/>
+                <h:inputText id="email" label="#{msg.accountEmail}"
+                             value="#{account.email}" required="true"/>
 
                 <f:facet name="footer">
                     <h:commandButton value="#{msg.send}" action="#{login.login()}"/>

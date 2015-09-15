@@ -14,37 +14,37 @@
         <h:form>
             <h:panelGrid columns="2">
                 <h:outputLabel for="firstName">
-                    #{msg.userFirstName}:
+                    #{msg.accountFirstName}:
                 </h:outputLabel>
-                <h:inputText id="firstName" label="#{msg.userFirstName}"
-                             value="#{user.firstName}" required="true">
+                <h:inputText id="firstName" label="#{msg.accountFirstName}"
+                             value="#{account.firstName}" required="true">
                     <f:validateRegex pattern="[a-zA-Z]+" />
                 </h:inputText>
                 
                 <h:outputLabel for="lastName">
-                    #{msg.userLastName}:
+                    #{msg.accountLastName}:
                 </h:outputLabel>
-                <h:inputText id="lastName" label="#{msg.userLastName}"
-                             value="#{user.lastName}" required="true">
+                <h:inputText id="lastName" label="#{msg.accountLastName}"
+                             value="#{account.lastName}" required="true">
                     <f:validateRegex pattern="[a-zA-Z]+" />
                 </h:inputText>
                 
                 <h:outputLabel for="email">
-                    #{msg.userEmail}:
+                    #{msg.accountEmail}:
                 </h:outputLabel>
-                <h:inputText id="email" label="#{msg.userEmail}"
-                             value="#{user.email}" required="true"/>
+                <h:inputText id="email" label="#{msg.accountEmail}"
+                             value="#{account.email}" required="true"/>
                 
                 <h:outputLabel for="phone">
-                    #{msg.userPhone}:
+                    #{msg.accountPhone}:
                 </h:outputLabel>
-                <h:inputText id="phone" label="#{msg.userPhone}"
-                             value="#{user.phone}" required="true">
+                <h:inputText id="phone" label="#{msg.accountPhone}"
+                             value="#{account.phone}" required="true">
                     <f:validateRegex pattern="\d+" />
                 </h:inputText>
 
                 <f:facet name="footer">
-                    <h:commandButton value="#{msg.send}" action="#{user.save()}"/>
+                    <h:commandButton value="#{msg.send}" action="#{account.save()}"/>
                 </f:facet>
             </h:panelGrid>
         </h:form>
