@@ -1,4 +1,4 @@
-CREATE TABLE Support
+CREATE TABLE Issues
 (
     Id INT 
         NOT NULL 
@@ -7,6 +7,6 @@ CREATE TABLE Support
         (START WITH 1, INCREMENT BY 1),
     Software VARCHAR(200),
     Os VARCHAR(200),
-    Issue VARCHAR(200),
+    Description VARCHAR(200),
     AccountId INT REFERENCES Accounts(Id)
 )

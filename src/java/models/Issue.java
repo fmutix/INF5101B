@@ -15,12 +15,12 @@ import javax.faces.event.ComponentSystemEvent;
 
 @ManagedBean
 @RequestScoped
-public class Support {
+public class Issue {
     
     @ManagedProperty(value = "#{account}")
     private Account account;
 
-    private String software, os, issue;
+    private String software, os, description;
 
     public void validateSoftwareOS(ComponentSystemEvent event) {
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -47,14 +47,14 @@ public class Support {
         Connection c = DB.getConnection();
 
         PreparedStatement query = c.prepareStatement(
-            "INSERT INTO Support" +
-            "(Software, Os, Issue, AccountId) " +
+            "INSERT INTO Issues" +
+            "(Software, Os, Description, AccountId) " +
             "Values (?, ?, ?, ?)"
         );
 
         query.setString(1, software);
         query.setString(2, os);
-        query.setString(3, issue);
+        query.setString(3, description);
         query.setInt(4, account.getId());
         query.executeUpdate();
 
@@ -69,6 +69,6 @@ public class Support {
     public String getOs() { return os; }
     public void setOs(String os) { this.os = os; }
 
-    public String getIssue() { return issue; }
-    public void setIssue(String issue) { this.issue = issue; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 }

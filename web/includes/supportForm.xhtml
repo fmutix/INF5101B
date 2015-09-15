@@ -11,14 +11,14 @@
         </div>
         
         <h:form>
-            <f:event listener="#{support.validateSoftwareOS}" type="postValidate" />
+            <f:event listener="#{issue.validateSoftwareOS}" type="postValidate" />
             
             <h:panelGrid columns="2">
                 <h:outputLabel for="software">
                     #{msg.supportSoftware}:
                 </h:outputLabel>
                 <h:selectOneMenu id="software" label="#{msg.supportSoftware}"
-                                 value="#{support.software}" required="true">
+                                 value="#{issue.software}" required="true">
                     <f:selectItem itemLabel="Microsoft Word"
                                   itemValue="Microsoft Word"/>
                     <f:selectItem itemLabel="Libreoffice Writer"
@@ -29,19 +29,19 @@
                     #{msg.supportOs}:
                 </h:outputLabel>
                 <h:selectOneMenu id="os" label="#{msg.supportOs}"
-                                 value="#{support.os}" required="true">
+                                 value="#{issue.os}" required="true">
                     <f:selectItem itemLabel="Linux" itemValue="Linux"/>
                     <f:selectItem itemLabel="Windows" itemValue="Windows"/>
                 </h:selectOneMenu>
                 
                 <h:outputLabel for="issue">
-                    #{msg.supportIssue}:
+                    #{msg.supportDescription}:
                 </h:outputLabel>
-                <h:inputTextarea id="issue" label="#{msg.supportIssue}"
-                                 value="#{support.issue}" required="true"/>
+                <h:inputTextarea id="description" label="#{msg.supportDescription}"
+                                 value="#{issue.description}" required="true"/>
                 
                 <f:facet name="footer">
-                    <h:commandButton value="#{msg.send}" action="#{support.save()}"/>
+                    <h:commandButton value="#{msg.send}" action="#{issue.save()}"/>
                 </f:facet>
             </h:panelGrid>
         </h:form>
