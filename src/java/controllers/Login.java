@@ -31,6 +31,27 @@ public class Login {
         }
     }
 
+    public String login() throws ClassNotFoundException, SQLException {
+        Connection c = DB.getConnection();
+
+        PreparedStatement query = c.prepareStatement(
+            "SELECT Id, FirstName, LastName, Email, Phone " +
+            "FROM Users " +
+            "WHERE Email = ?"
+        );
+
+        query.setString(1, user.getEmail());
+
+        ResultSet rs = query.executeQuery();
+        rs.next();
+        user.setId(rs.getInt("Id"));
+        user.setFirstName(rs.getString("FirstName"));
+        user.setLastName(rs.getString("LastName"));
+        user.setPhone("Phone");
+
+        return "index";
+    }
+
     public String logout() {
         FacesContext.getCurrentInstance()
                     .getExternalContext()
