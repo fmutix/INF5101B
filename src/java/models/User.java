@@ -1,5 +1,6 @@
 package models;
 
+import controllers.DB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,19 +16,19 @@ import javax.faces.event.ComponentSystemEvent;
 @ManagedBean
 @RequestScoped
 public class User {
-    
+
     private String firstName, lastName, email, phone, software, os, issue;
-    
+
     public void validateSoftwareOS(ComponentSystemEvent event) {
         FacesContext fc = FacesContext.getCurrentInstance();
         UIComponent components = event.getComponent();
-        
+
         UIInput softwareInput = (UIInput) components.findComponent("software");
         UIInput osInput = (UIInput) components.findComponent("os");
-        
+
         String software_ = softwareInput.getLocalValue().toString();
         String os_ = osInput.getLocalValue().toString();
-        
+
         if (software_.equals("Microsoft Word") && os_.equals("Linux")) {
             FacesMessage errorMsg = new FacesMessage(
                 FacesMessage.SEVERITY_ERROR,
@@ -38,14 +39,9 @@ public class User {
             fc.renderResponse();
         }
     }
-    
-    public String save() throws ClassNotFoundException, SQLException {
-        Class.forName("org.apache.derby.jdbc.ClientDriver");
 
-        Connection c = DriverManager.getConnection(
-            "jdbc:derby://localhost:1527/hotline",
-            "test", "test"
-        );
+    public String save() throws ClassNotFoundException, SQLException {
+        Connection c = DB.getConnection();
 
         PreparedStatement query = c.prepareStatement(
             "INSERT INTO Users" +
@@ -53,7 +49,6 @@ public class User {
             "Values (?, ?, ?, ?, ?, ?, ?)"
         );
 
-        java.sql.Statement insertStatement = c.createStatement();
         query.setString(1, firstName);
         query.setString(2, lastName);
         query.setString(3, email);
@@ -62,7 +57,7 @@ public class User {
         query.setString(6, os);
         query.setString(7, issue);
         query.executeUpdate();
-        
+
         return "summary";
     }
 
