@@ -17,8 +17,6 @@ public class User {
 
     private int id;
     private String firstName, lastName, email, phone;
-    
-    public User() {}
 
     /**
      * Redirects the user to the login page if he is not logged in yet.
@@ -28,7 +26,7 @@ public class User {
         if (!isLogged()) {
             ExternalContext ec = FacesContext.getCurrentInstance()
                 .getExternalContext();
-            ec.redirect("login.xhtml");
+            ec.redirect("/tps/faces/login.xhtml");
         }
     }
 
