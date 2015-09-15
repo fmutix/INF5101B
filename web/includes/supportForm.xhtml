@@ -13,15 +13,7 @@
         <h:form>
             <f:event listener="#{user.validateSoftwareOS}" type="postValidate" />
             
-            <h:panelGrid columns="2">                
-                <h:outputLabel for="phone">
-                    #{msg.userPhone}:
-                </h:outputLabel>
-                <h:inputText id="phone" label="#{msg.userPhone}"
-                             value="#{user.phone}" required="true">
-                    <f:validateRegex pattern="\d+" />
-                </h:inputText>
-                
+            <h:panelGrid columns="2">
                 <h:outputLabel for="software">
                     #{msg.userSoftware}:
                 </h:outputLabel>

@@ -35,6 +35,14 @@
                 <h:inputText id="email" label="#{msg.userEmail}"
                              value="#{user.email}" required="true"/>
                 
+                <h:outputLabel for="phone">
+                    #{msg.userPhone}:
+                </h:outputLabel>
+                <h:inputText id="phone" label="#{msg.userPhone}"
+                             value="#{user.phone}" required="true">
+                    <f:validateRegex pattern="\d+" />
+                </h:inputText>
+
                 <f:facet name="footer">
                     <h:commandButton value="#{msg.send}" action="index"/>
                 </f:facet>
