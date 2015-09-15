@@ -44,7 +44,7 @@
                 </h:inputText>
 
                 <f:facet name="footer">
-                    <h:commandButton value="#{msg.send}" action="index"/>
+                    <h:commandButton value="#{msg.send}" action="#{user.save()}"/>
                 </f:facet>
             </h:panelGrid>
         </h:form>
