@@ -11,32 +11,9 @@
         </div>
         
         <h:form>
-            <f:event listener="#{user.validateSoftwareOS}" 
-                     type="postValidate" />
+            <f:event listener="#{user.validateSoftwareOS}" type="postValidate" />
             
             <h:panelGrid columns="2">                
-                <h:outputLabel for="firstName">
-                    #{msg.userFirstName}:
-                </h:outputLabel>
-                <h:inputText id="firstName" label="#{msg.userFirstName}"
-                             value="#{user.firstName}" required="true">
-                    <f:validateRegex pattern="[a-zA-Z]+" />
-                </h:inputText>
-                
-                <h:outputLabel for="lastName">
-                    #{msg.userLastName}:
-                </h:outputLabel>
-                <h:inputText id="lastName" label="#{msg.userLastName}"
-                             value="#{user.lastName}" required="true">
-                    <f:validateRegex pattern="[a-zA-Z]+" />
-                </h:inputText>
-                
-                <h:outputLabel for="email">
-                    #{msg.userEmail}:
-                </h:outputLabel>
-                <h:inputText id="email" label="#{msg.userEmail}"
-                             value="#{user.email}" required="true"/>
-                
                 <h:outputLabel for="phone">
                     #{msg.userPhone}:
                 </h:outputLabel>
