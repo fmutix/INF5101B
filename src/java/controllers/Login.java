@@ -1,6 +1,10 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -25,6 +29,14 @@ public class Login {
                 .getExternalContext();
             ec.redirect("/tps/faces/login.xhtml");
         }
+    }
+
+    public String logout() {
+        FacesContext.getCurrentInstance()
+                    .getExternalContext()
+                    .invalidateSession();
+
+        return "index?faces-redirect=true";
     }
     
     public void setUser(User user) { this.user = user; }

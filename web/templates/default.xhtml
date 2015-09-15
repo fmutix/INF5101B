@@ -25,7 +25,9 @@
             </ui:fragment>
 
             <ui:fragment rendered="#{login.logged}">
-                <h:link value="#{msg.logout}" outcome="#{login.logout()}"/>
+                <h:form>
+                    <h:commandLink value="#{msg.logout}" action="#{login.logout()}"/>
+                </h:form>
             </ui:fragment>
 
             <hr/>
