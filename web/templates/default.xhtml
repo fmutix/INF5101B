@@ -15,8 +15,20 @@
                 <h:link value="#{msg.title}" outcome="index"/>
                 -
                 #{title}
-                <hr/>
+
             </h1>
+
+            <ui:fragment rendered="#{!login.logged}" >
+                <h:link value="#{msg.login}" outcome="login"/>
+                |
+                <h:link value="#{msg.register}" outcome="register"/>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{login.logged}">
+                <h:link value="#{msg.logout}" outcome="#{login.logout()}"/>
+            </ui:fragment>
+
+            <hr/>
         </div>
         
         <div id="content">
