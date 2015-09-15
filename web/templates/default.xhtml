@@ -13,9 +13,6 @@
         <div id="header">
             <h1>
                 <h:link value="#{msg.title}" outcome="index"/>
-                -
-                #{title}
-
             </h1>
 
             <ui:fragment rendered="#{!login.logged}" >
@@ -34,6 +31,8 @@
         </div>
         
         <div id="content">
+            <h1>#{title}</h1>
+
             <ui:insert name="content">Placeholder</ui:insert>
         </div>
     </h:body>
