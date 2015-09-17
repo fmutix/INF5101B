@@ -1,34 +1,23 @@
 package entities;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
+@Stateless
+@LocalBean
 public class Repository {
-    private static final EntityManagerFactory emf;
     
-    static {
-        emf = Persistence.createEntityManagerFactory("tpsPU");
-    }
-    
-    public static EntityManager getEntityManager() {
-        return emf.createEntityManager();
-    }
+    @PersistenceContext
+    private EntityManager em;
     
     /**
      * Persists an object in the database.
      * @param o Entity to persist.
      */
-    public static void persist(Object o) {
-        EntityManager em = getEntityManager();
-        
-        try {
-            em.getTransaction().begin();
-            em.persist(o);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
+    public void persist(Object o) {
+        em.persist(o);
     }
     
 }

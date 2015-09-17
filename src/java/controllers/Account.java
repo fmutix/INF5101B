@@ -8,10 +8,14 @@ import javax.faces.context.FacesContext;
 import entities.AccountEntity;
 import entities.AccountRepository;
 import entities.Repository;
+import javax.ejb.EJB;
 
 @ManagedBean
 @SessionScoped
 public class Account {
+    
+    @EJB private Repository repository;
+    @EJB private AccountRepository accountRepository;
     
     private AccountEntity entity;
     
@@ -35,10 +39,9 @@ public class Account {
      * @return 
      */
     public String login() {
-        // TODO handle authentification failure
-        
+        // TODO handle authentification failure        
         String email = entity.getEmail();
-        AccountEntity ae = AccountRepository.findUniqueByEmail(email);
+        AccountEntity ae = accountRepository.findUniqueByEmail(email);
         setEntity(ae);
         
         return "index";
@@ -53,7 +56,7 @@ public class Account {
     }
     
     public String register() {
-        Repository.persist(entity);
+        repository.persist(entity);
 
         return "index";
     }
