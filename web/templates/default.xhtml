@@ -15,15 +15,15 @@
                 <h:link value="#{msg.title}" outcome="index"/>
             </h1>
 
-            <ui:fragment rendered="#{!login.logged}" >
+            <ui:fragment rendered="#{!account.logged}" >
                 <h:link value="#{msg.login}" outcome="login"/>
                 |
                 <h:link value="#{msg.register}" outcome="register"/>
             </ui:fragment>
 
-            <ui:fragment rendered="#{login.logged}">
+            <ui:fragment rendered="#{account.logged}">
                 <h:form>
-                    <h:commandLink value="#{msg.logout}" action="#{login.logout()}"/>
+                    <h:commandLink value="#{msg.logout}" action="#{account.logout()}"/>
                 </h:form>
             </ui:fragment>
 

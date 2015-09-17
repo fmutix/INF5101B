@@ -17,7 +17,7 @@
                     #{msg.accountFirstName}:
                 </h:outputLabel>
                 <h:inputText id="firstName" label="#{msg.accountFirstName}"
-                             value="#{account.firstName}" required="true">
+                             value="#{account.entity.firstName}" required="true">
                     <f:validateRegex pattern="[a-zA-Z]+" />
                 </h:inputText>
                 
@@ -25,7 +25,7 @@
                     #{msg.accountLastName}:
                 </h:outputLabel>
                 <h:inputText id="lastName" label="#{msg.accountLastName}"
-                             value="#{account.lastName}" required="true">
+                             value="#{account.entity.lastName}" required="true">
                     <f:validateRegex pattern="[a-zA-Z]+" />
                 </h:inputText>
                 
@@ -33,18 +33,18 @@
                     #{msg.accountEmail}:
                 </h:outputLabel>
                 <h:inputText id="email" label="#{msg.accountEmail}"
-                             value="#{account.email}" required="true"/>
+                             value="#{account.entity.email}" required="true"/>
                 
                 <h:outputLabel for="phone">
                     #{msg.accountPhone}:
                 </h:outputLabel>
                 <h:inputText id="phone" label="#{msg.accountPhone}"
-                             value="#{account.phone}" required="true">
+                             value="#{account.entity.phone}" required="true">
                     <f:validateRegex pattern="\d+" />
                 </h:inputText>
 
                 <f:facet name="footer">
-                    <h:commandButton value="#{msg.send}" action="#{account.save()}"/>
+                    <h:commandButton value="#{msg.send}" action="#{account.register()}"/>
                 </f:facet>
             </h:panelGrid>
         </h:form>

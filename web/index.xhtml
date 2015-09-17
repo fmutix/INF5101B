@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <h:body>
-        <f:event type="preRenderView" listener="#{login.redirect()}" />
+        <f:event type="preRenderView" listener="#{account.loginRedirect()}" />
 
         <ui:decorate template="templates/default.xhtml">
             <ui:param name="title" value="#{msg.supportTitle}"/>

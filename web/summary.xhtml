@@ -10,10 +10,10 @@
 
             <ui:define name="content">
                 <p>
-                    #{msg.accountFirstName}: #{account.firstName}<br/>
-                    #{msg.accountLastName}: #{account.lastName}<br/>
-                    #{msg.accountEmail}: #{account.email}<br/>
-                    #{msg.accountPhone}: #{account.phone}<br/>
+                    #{msg.accountFirstName}: #{account.entity.firstName}<br/>
+                    #{msg.accountLastName}: #{account.entity.lastName}<br/>
+                    #{msg.accountEmail}: #{account.entity.email}<br/>
+                    #{msg.accountPhone}: #{account.entity.phone}<br/>
                     #{msg.supportSoftware}: #{support.software}<br/>
                     #{msg.supportOs}: #{support.os}<br/>
                     #{msg.supportDescription}: #{support.description}<br/>

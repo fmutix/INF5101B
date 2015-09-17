@@ -17,10 +17,10 @@
                     #{msg.accountEmail}:
                 </h:outputLabel>
                 <h:inputText id="email" label="#{msg.accountEmail}"
-                             value="#{account.email}" required="true"/>
+                             value="#{account.entity.email}" required="true"/>
 
                 <f:facet name="footer">
-                    <h:commandButton value="#{msg.send}" action="#{login.login()}"/>
+                    <h:commandButton value="#{msg.send}" action="#{account.login()}"/>
                 </f:facet>
             </h:panelGrid>
         </h:form>
