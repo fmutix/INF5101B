@@ -1,6 +1,5 @@
 package controllers;
 
-import com.sun.org.glassfish.gmbal.ManagedAttribute;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -39,7 +38,7 @@ public class Issue {
         if (software_.equals("Microsoft Word") && os_.equals("Linux")) {
             FacesMessage errorMsg = new FacesMessage(
                 FacesMessage.SEVERITY_ERROR,
-                "This software cannot be used with this OS.", 
+                "This software cannot be used with this OS.",
                 null
             );
             fc.addMessage("software", errorMsg);

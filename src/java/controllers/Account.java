@@ -9,6 +9,9 @@ import entities.AccountEntity;
 import entities.AccountRepository;
 import entities.Repository;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
+import javax.faces.application.FacesMessage;
+import javax.persistence.NoResultException;
 
 @ManagedBean
 @SessionScoped
@@ -39,12 +42,24 @@ public class Account {
      * @return 
      */
     public String login() {
-        // TODO handle authentification failure        
-        String email = entity.getEmail();
-        AccountEntity ae = accountRepository.findUniqueByEmail(email);
-        setEntity(ae);
+        FacesContext fc = FacesContext.getCurrentInstance();
         
-        return "index";
+        try {    
+            String email = entity.getEmail();
+            AccountEntity ae = accountRepository.findUniqueByEmail(email);
+            setEntity(ae);
+            return "index";
+        } catch(EJBException nre) {
+            FacesMessage errorMsg = new FacesMessage(
+                FacesMessage.SEVERITY_ERROR,
+                "This account does not exist.",
+                null
+            );
+            fc.addMessage("email", errorMsg);
+            fc.renderResponse();
+        }
+        
+        return null;
     }
     
     public String logout() {
