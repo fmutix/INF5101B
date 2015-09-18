@@ -1,5 +1,6 @@
 package controllers;
 
+import com.sun.org.glassfish.gmbal.ManagedAttribute;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -10,10 +11,14 @@ import javax.faces.event.ComponentSystemEvent;
 import entities.IssueEntity;
 import entities.Repository;
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedProperty;
 
 @ManagedBean
 @RequestScoped
 public class Issue {
+    
+    @ManagedProperty(value="#{account}")
+    private Account account;
     
     @EJB private Repository repository;
     
@@ -43,6 +48,7 @@ public class Issue {
     }
     
     public String send() {
+        entity.setAccount(account.getEntity());
         repository.persist(entity);
 
         return "summary";
@@ -50,4 +56,6 @@ public class Issue {
 
     public IssueEntity getEntity() { return entity; }
     public void setEntity(IssueEntity entity) { this.entity = entity; }
+    
+    public void setAccount(Account account) { this.account = account; }
 }

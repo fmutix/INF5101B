@@ -1,12 +1,14 @@
 package entities;
 
 import java.io.Serializable;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Issues")
@@ -22,8 +24,10 @@ public class IssueEntity implements Serializable {
     
     private String description;
     
-    /*@Embedded
-    private AccountEntity account;*/
+    @OneToOne
+    @JoinColumn(name="AccountId")
+    @NotNull
+    private AccountEntity account;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -37,8 +41,8 @@ public class IssueEntity implements Serializable {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
     
-    /*public AccountEntity getAccount() { return account; }
-    public void setAccount(AccountEntity account) { this.account = account; }*/
+    public AccountEntity getAccount() { return account; }
+    public void setAccount(AccountEntity account) { this.account = account; }
 
     @Override
     public int hashCode() {
