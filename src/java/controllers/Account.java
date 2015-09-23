@@ -11,7 +11,6 @@ import entities.Repository;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.faces.application.FacesMessage;
-import javax.persistence.NoResultException;
 
 @ManagedBean
 @SessionScoped
