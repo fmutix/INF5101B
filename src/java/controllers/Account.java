@@ -16,7 +16,6 @@ import javax.faces.application.FacesMessage;
 @SessionScoped
 public class Account {
     
-    @EJB private Repository repository;
     @EJB private AccountRepository accountRepository;
     
     private AccountEntity entity;
@@ -38,24 +37,22 @@ public class Account {
     /**
      * Connects to an account using partial information stored in the account's 
      * entity (email).
-     * @return 
+     * @return index page if the login succeeded.
      */
     public String login() {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        
         try {    
             String email = entity.getEmail();
-            AccountEntity ae = accountRepository.findUniqueByEmail(email);
+            String pwd = entity.getPassword();
+            AccountEntity ae = accountRepository.login(email, pwd);
+            if (ae == null) {
+                loginFail();
+                return null;
+            }
+            
             setEntity(ae);
             return "index";
         } catch(EJBException nre) {
-            FacesMessage errorMsg = new FacesMessage(
-                FacesMessage.SEVERITY_ERROR,
-                "This account does not exist.",
-                null
-            );
-            fc.addMessage("email", errorMsg);
-            fc.renderResponse();
+            loginFail();
         }
         
         return null;
@@ -70,9 +67,21 @@ public class Account {
     }
     
     public String register() {
-        repository.persist(entity);
+        accountRepository.persist(entity);
 
         return "index";
+    }
+    
+    private void loginFail() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        
+        FacesMessage errorMsg = new FacesMessage(
+            FacesMessage.SEVERITY_ERROR,
+            "Login failed. Email/password error, or this account does not exist.",
+            null
+        );
+        fc.addMessage("email", errorMsg);
+        fc.renderResponse();
     }
     
     public AccountEntity getEntity() { return entity; }

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Accounts")
@@ -21,9 +22,13 @@ public class AccountEntity implements Serializable {
     private String lastName;
     
     @Column(unique = true)
+    @NotNull
     private String email;
     
     private String phone;
+    
+    @NotNull
+    private String password;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -39,6 +44,9 @@ public class AccountEntity implements Serializable {
 
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
+    
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
     @Override
     public int hashCode() {

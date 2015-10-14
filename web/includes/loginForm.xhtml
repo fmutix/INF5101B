@@ -18,6 +18,12 @@
                 </h:outputLabel>
                 <h:inputText id="email" label="#{msg.accountEmail}"
                              value="#{account.entity.email}" required="true"/>
+                
+                <h:outputLabel for="password">
+                    #{msg.accountPassword}:
+                </h:outputLabel>
+                <h:inputSecret id="password" label="#{msg.accountPassword}"
+                             value="#{account.entity.password}" required="true" />
 
                 <f:facet name="footer">
                     <h:commandButton value="#{msg.send}" action="#{account.login()}"/>
