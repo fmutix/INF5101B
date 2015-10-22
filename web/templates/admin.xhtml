@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <h:head>
+        <title>#{msg.title} - #{msg.adminTitle} - #{title}</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"/>
+    </h:head>
+    
+    <h:body>
+        <h:form>
+            <nav class="navbar navbar-inverse navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <h:link class="navbar-brand" value="#{msg.title}" outcome="/index"/>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <ui:fragment rendered="#{!account.logged}" >
+                                <li><h:link value="#{msg.login}" outcome="/login"/></li>
+                                <li><h:link value="#{msg.register}" outcome="/register"/></li>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{account.logged}">
+                                <li><h:commandLink value="#{msg.logout}" action="#{account.logout()}"/></li>
+                            </ui:fragment>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </h:form>
+        
+        <div class="container">
+            <h1>#{msg.adminTitle} - #{title}</h1>
+            <ui:fragment rendered="#{account.entity.role eq 'admin'}" >
+                <ui:insert name="content">Placeholder</ui:insert>
+            </ui:fragment>
+            
+            <ui:fragment rendered="#{account.entity.role ne 'admin'}" >
+                <div class="alert alert-danger">#{msg.errorNotAuthorized}</div>
+            </ui:fragment>
+        </div>
+    </h:body>
+</html>
+

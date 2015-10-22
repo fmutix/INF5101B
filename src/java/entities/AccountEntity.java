@@ -12,6 +12,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "Accounts")
 public class AccountEntity implements Serializable {
+    private static final String ROLE_USER = "user";
+    private static final String ROLE_ADMIN = "admin";
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +32,12 @@ public class AccountEntity implements Serializable {
     
     @NotNull
     private String password;
+    
+    private String role;
+    
+    public AccountEntity() {
+        role = ROLE_USER;
+    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -47,6 +56,9 @@ public class AccountEntity implements Serializable {
     
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+    
+    public String getRole() { return role; }
+    public void setRole(String group) { this.role = role; }
 
     @Override
     public int hashCode() {
