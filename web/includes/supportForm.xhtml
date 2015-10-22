@@ -6,9 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
     <ui:composition>
-        <div class="error">
-            <h:messages/>
-        </div>
+        <h:messages class="alert alert-danger"/>
         
         <h:form>
             <f:event listener="#{issue.validateSoftwareOS}" type="postValidate" />
