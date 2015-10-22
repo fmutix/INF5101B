@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <h:body>
+        <ui:composition>
+            <h:form>
+                <nav class="navbar navbar-inverse navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <h:link class="navbar-brand" value="#{msg.title}" outcome="/index"/>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <ui:fragment rendered="#{!account.logged}" >
+                                    <li><h:link value="#{msg.login}" outcome="/login"/></li>
+                                    <li><h:link value="#{msg.register}" outcome="/register"/></li>
+                                </ui:fragment>
+                                <ui:fragment rendered="#{account.logged}">
+                                    <li><h:commandLink value="#{msg.logout}" action="#{account.logout()}"/></li>
+                                </ui:fragment>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+

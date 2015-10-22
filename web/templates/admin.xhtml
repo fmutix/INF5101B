@@ -12,26 +12,7 @@
     </h:head>
     
     <h:body>
-        <h:form>
-            <nav class="navbar navbar-inverse navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <h:link class="navbar-brand" value="#{msg.title}" outcome="/index"/>
-                    </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <ui:fragment rendered="#{!account.logged}" >
-                                <li><h:link value="#{msg.login}" outcome="/login"/></li>
-                                <li><h:link value="#{msg.register}" outcome="/register"/></li>
-                            </ui:fragment>
-                            <ui:fragment rendered="#{account.logged}">
-                                <li><h:commandLink value="#{msg.logout}" action="#{account.logout()}"/></li>
-                            </ui:fragment>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </h:form>
+        <ui:include src="/includes/header.xhtml"/>
         
         <div class="container">
             <h1>#{msg.adminTitle} - #{title}</h1>
