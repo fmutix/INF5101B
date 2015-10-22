@@ -9,17 +9,74 @@
             <ui:param name="title" value="#{msg.summaryTitle}"/>
 
             <ui:define name="content">
-                <p>
-                    #{msg.accountFirstName}: #{account.entity.firstName}<br/>
-                    #{msg.accountLastName}: #{account.entity.lastName}<br/>
-                    #{msg.accountEmail}: #{account.entity.email}<br/>
-                    #{msg.accountPhone}: #{account.entity.phone}<br/>
-                    #{msg.supportSoftware}: #{issue.entity.software}<br/>
-                    #{msg.supportOs}: #{issue.entity.os}<br/>
-                    #{msg.supportDescription}: #{issue.entity.description}<br/>
-                </p>
-
-                <p>#{msg.summaryThanks}</p>
+                <div class="alert alert-success" role="alert">
+                    #{msg.summaryThanks}
+                </div>
+                
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            #{msg.accountFirstName}
+                        </h4>
+                        <p class="list-group-item-text">
+                            #{account.entity.firstName}
+                        </p>
+                    </div>
+                    
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            #{msg.accountLastName}
+                        </h4>
+                        <p class="list-group-item-text">
+                            #{account.entity.lastName}
+                        </p>
+                    </div>
+                    
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            #{msg.accountEmail}
+                        </h4>
+                        <p class="list-group-item-text">
+                            #{account.entity.email}
+                        </p>
+                    </div>
+                    
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            #{msg.accountPhone}
+                        </h4>
+                        <p class="list-group-item-text">
+                            #{account.entity.phone}
+                        </p>
+                    </div>
+                    
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            #{msg.supportSoftware}
+                        </h4>
+                        <p class="list-group-item-text">
+                            #{issue.entity.software}
+                        </p>
+                    </div>
+                    
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            #{msg.supportOs}
+                        </h4>
+                        <p class="list-group-item-text">
+                            #{issue.entity.os}
+                        </p>
+                    </div>
+                    
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            #{msg.supportDescription}
+                        </h4>
+                        <p class="list-group-item-text">
+                            #{issue.entity.description}
+                        </p>
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>
