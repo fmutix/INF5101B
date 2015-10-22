@@ -8,6 +8,8 @@ import javax.faces.context.FacesContext;
 import entities.AccountEntity;
 import entities.AccountRepository;
 import entities.Repository;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.faces.application.FacesMessage;
@@ -24,13 +26,16 @@ public class Account {
     
     /**
      * Redirects the user to the login page if he is not logged in yet.
-     * @throws java.io.IOException
      */
-    public void loginRedirect() throws IOException {
-        if (!isLogged()) {
-            ExternalContext ec = FacesContext.getCurrentInstance()
-                .getExternalContext();
-            ec.redirect("/tps/faces/login.xhtml");
+    public void loginRedirect() {
+        try {
+            if (!isLogged()) {
+                    ExternalContext ec = FacesContext.getCurrentInstance()
+                            .getExternalContext();
+                    ec.redirect("/tps/faces/login.xhtml");    
+            }
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
     }
     
