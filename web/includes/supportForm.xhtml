@@ -8,40 +8,46 @@
     <ui:composition>
         <h:messages class="alert alert-danger"/>
         
-        <h:form>
+        <h:form role="form">
             <f:event listener="#{issue.validateSoftwareOS}" type="postValidate" />
             
-            <h:panelGrid columns="2">
+            <div class="form-group">
                 <h:outputLabel for="software">
                     #{msg.supportSoftware}:
                 </h:outputLabel>
-                <h:selectOneMenu id="software" label="#{msg.supportSoftware}"
+                <h:selectOneMenu id="software" class="form-control"
+                                 label="#{msg.supportSoftware}"
                                  value="#{issue.entity.software}" required="true">
                     <f:selectItem itemLabel="Microsoft Word"
                                   itemValue="Microsoft Word"/>
                     <f:selectItem itemLabel="Libreoffice Writer"
                                   itemValue="Libreoffice Writer"/>
                 </h:selectOneMenu>
+            </div>
                 
+            <div class="form-group">
                 <h:outputLabel for="os">
                     #{msg.supportOs}:
                 </h:outputLabel>
-                <h:selectOneMenu id="os" label="#{msg.supportOs}"
+                <h:selectOneMenu id="os" class="form-control" 
+                                 label="#{msg.supportOs}"
                                  value="#{issue.entity.os}" required="true">
                     <f:selectItem itemLabel="Linux" itemValue="Linux"/>
                     <f:selectItem itemLabel="Windows" itemValue="Windows"/>
                 </h:selectOneMenu>
+            </div>
                 
+            <div class="form-group">
                 <h:outputLabel for="issue">
                     #{msg.supportDescription}:
                 </h:outputLabel>
-                <h:inputTextarea id="issue" label="#{msg.supportDescription}"
+                <h:inputTextarea id="issue" class="form-control"
+                                 label="#{msg.supportDescription}"
                                  value="#{issue.entity.description}" required="true"/>
+            </div>
                 
-                <f:facet name="footer">
-                    <h:commandButton value="#{msg.send}" action="#{issue.send()}"/>
-                </f:facet>
-            </h:panelGrid>
+                <h:commandButton class="btn btn-default" 
+                                 value="#{msg.send}" action="#{issue.send()}"/>
         </h:form>
     </ui:composition>
     </h:body>

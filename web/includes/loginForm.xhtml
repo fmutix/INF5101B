@@ -2,31 +2,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:body>
     <ui:composition>
         <h:messages class="alert alert-danger"/>
         
-        <h:form>
-            <h:panelGrid columns="2">
+        <h:form role="form">
+            <div class="form-group">
                 <h:outputLabel for="email">
                     #{msg.accountEmail}:
                 </h:outputLabel>
-                <h:inputText id="email" label="#{msg.accountEmail}"
+                <h:inputText id="email" class="form-control" 
+                             label="#{msg.accountEmail}"
                              value="#{account.entity.email}" required="true"/>
-                
+            </div>
+
+            <div class="form-group">
                 <h:outputLabel for="password">
                     #{msg.accountPassword}:
                 </h:outputLabel>
-                <h:inputSecret id="password" label="#{msg.accountPassword}"
-                             value="#{account.entity.password}" required="true" />
+                <h:inputSecret id="password" class="form-control"
+                               label="#{msg.accountPassword}"
+                               value="#{account.entity.password}" required="true" />
+            </div>
 
-                <f:facet name="footer">
-                    <h:commandButton value="#{msg.send}" action="#{account.login()}"/>
-                </f:facet>
-            </h:panelGrid>
+            <h:commandButton class="btn btn-default" value="#{msg.send}" 
+                             action="#{account.login()}"/>            
         </h:form>
     </ui:composition>
     </h:body>

@@ -9,48 +9,60 @@
         <ui:composition>
         <h:messages class="alert alert-danger"/>
         
-        <h:form>
-            <h:panelGrid columns="2">
+        <h:form role="form">
+            <div class="form-group">
                 <h:outputLabel for="email">
                     #{msg.accountEmail}*:
                 </h:outputLabel>
-                <h:inputText id="email" label="#{msg.accountEmail}"
+                <h:inputText id="email" class="form-control"
+                             label="#{msg.accountEmail}"
                              value="#{account.entity.email}" required="true"/>
-                
+            </div>
+            
+            <div class="form-group">
                 <h:outputLabel for="password">
                     #{msg.accountPassword}*:
                 </h:outputLabel>
-                <h:inputSecret id="password" label="#{msg.accountPassword}"
-                             value="#{account.entity.password}" required="true"/>
-                
+                <h:inputSecret id="password" class="form-control"
+                               label="#{msg.accountPassword}"
+                               value="#{account.entity.password}" required="true"/>
+            </div>
+            
+            <div class="form-group">
                 <h:outputLabel for="firstName">
                     #{msg.accountFirstName}*:
                 </h:outputLabel>
-                <h:inputText id="firstName" label="#{msg.accountFirstName}"
+                <h:inputText id="firstName" class="form-control"
+                             label="#{msg.accountFirstName}"
                              value="#{account.entity.firstName}" required="true">
                     <f:validateRegex pattern="[a-zA-Z]+" />
                 </h:inputText>
+            </div>
                 
+            <div class="form-group">
                 <h:outputLabel for="lastName">
                     #{msg.accountLastName}*:
                 </h:outputLabel>
-                <h:inputText id="lastName" label="#{msg.accountLastName}"
+                <h:inputText id="lastName" class="form-control"
+                             label="#{msg.accountLastName}"
                              value="#{account.entity.lastName}" required="true">
                     <f:validateRegex pattern="[a-zA-Z]+" />
                 </h:inputText>
+            </div>
                 
+            <div class="form-group">
                 <h:outputLabel for="phone">
                     #{msg.accountPhone}*:
                 </h:outputLabel>
-                <h:inputText id="phone" label="#{msg.accountPhone}"
+                <h:inputText id="phone" class="form-control"
+                             label="#{msg.accountPhone}"
                              value="#{account.entity.phone}" required="true">
                     <f:validateRegex pattern="\d+" />
                 </h:inputText>
+            </div>
 
-                <f:facet name="footer">
-                    <h:commandButton value="#{msg.send}" action="#{account.register()}"/>
-                </f:facet>
-            </h:panelGrid>
+            <h:commandButton class="btn btn-default" value="#{msg.send}" 
+                             action="#{account.register()}"/>
         </h:form>
     </ui:composition>
     </h:body>
