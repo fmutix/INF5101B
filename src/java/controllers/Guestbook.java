@@ -28,6 +28,12 @@ public class Guestbook {
         return "";
     }
     
+    public void removeMessage(MessageEntity m) {
+        if (account.getEntity().isAdmin()) {
+            messageRepository.remove(m);
+        }
+    }
+    
     public List<MessageEntity> getMessages() {
         return messageRepository.findAll();
     }

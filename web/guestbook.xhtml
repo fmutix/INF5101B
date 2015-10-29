@@ -34,11 +34,16 @@
                                     <hr/>
                                     <p>#{message.description}</p>
                                 </td>
-                                <td class="text-right text-nowrap">
-                                    <button class="btn btn-xs btn-danger">
-                                        <span class="glyphicon glyphicon-trash"/>
-                                    </button>
-                                </td>
+                                <ui:fragment rendered="#{account.entity.isAdmin()}" >
+                                    <td class="text-right text-nowrap">
+                                        <h:form>
+                                            <h:commandLink class="btn btn-xs btn-danger"
+                                                           action="#{guestbook.removeMessage(message)}">
+                                                <span class="glyphicon glyphicon-trash"/>
+                                            </h:commandLink>
+                                        </h:form>
+                                    </td>
+                                </ui:fragment>
                             </tr></tbody></table>
                         </div>
                     </c:forEach>

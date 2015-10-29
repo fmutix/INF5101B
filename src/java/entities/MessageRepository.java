@@ -35,6 +35,14 @@ public class MessageRepository {
     }
     
     /**
+     * Remove a message in the database.
+     * @param m Message to remove.
+     */
+    public void remove(MessageEntity m) {
+        em.remove(em.merge(m));
+    }
+    
+    /**
      * Persists a message in the database.
      * @param m Message to persist.
      */
