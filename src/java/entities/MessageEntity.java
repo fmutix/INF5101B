@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,35 +9,35 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "Issues")
-public class IssueEntity implements Serializable {
+@Table(name = "Messages")
+public class MessageEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private String software;
+    @Temporal(TemporalType.TIMESTAMP)
+    @NotNull
+    private Date messageTime;
     
-    private String os;
-    
+    @NotNull
     private String description;
     
     @OneToOne
     @JoinColumn(name="AccountId")
     @NotNull
     private AccountEntity account;
-
+    
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     
-    public String getSoftware() { return software; }
-    public void setSoftware(String software) { this.software = software; }
-
-    public String getOs() { return os; }
-    public void setOs(String os) { this.os = os; }
+    public Date getMessageTime() { return messageTime; }
+    public void setMessageTime(Date messageTime) { this.messageTime = messageTime; }
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
@@ -54,10 +55,10 @@ public class IssueEntity implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof IssueEntity)) {
+        if (!(object instanceof MessageEntity)) {
             return false;
         }
-        IssueEntity other = (IssueEntity) object;
+        MessageEntity other = (MessageEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -66,7 +67,7 @@ public class IssueEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.IssueEntity[ id=" + id + " ]";
+        return "entities.MessageEntity[ id=" + id + " ]";
     }
     
 }

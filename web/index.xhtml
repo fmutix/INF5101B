@@ -2,17 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
     <h:body>
-        <f:event type="preRenderView" listener="#{account.loginRedirect()}" />
-
         <ui:decorate template="templates/default.xhtml">
-            <ui:param name="title" value="#{msg.supportTitle}"/>
-
+            <ui:param name="title" value="#{msg.indexTitle}"/>
+            
             <ui:define name="content">
-                <ui:include src="includes/supportForm.xhtml"/>
+                Index placeholder
             </ui:define>
         </ui:decorate>
     </h:body>
