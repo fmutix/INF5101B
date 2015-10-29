@@ -7,15 +7,20 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import entities.AccountEntity;
 import entities.AccountRepository;
+import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedProperty;
 
 @ManagedBean
 @SessionScoped
 public class Account {
     
     @EJB private AccountRepository accountRepository;
+    
+    @ManagedProperty(value="#{msg}")
+    private ResourceBundle msg;
     
     private AccountEntity entity;
     
@@ -69,9 +74,16 @@ public class Account {
     }
     
     public String register() {
-        accountRepository.persist(entity);
-
-        return "index";
+        try {
+            accountRepository.persist(entity);
+            return "index";
+        } catch(EJBException ejbe) {
+            FacesContext.getCurrentInstance()
+                .getExternalContext()
+                .invalidateSession();
+            registerFail();
+            return null;
+        }
     }
     
     private void loginFail() {
@@ -79,7 +91,19 @@ public class Account {
         
         FacesMessage errorMsg = new FacesMessage(
             FacesMessage.SEVERITY_ERROR,
-            "Login failed. Email/password error, or this account does not exist.",
+            msg.getString("accountLoginError"),
+            null
+        );
+        fc.addMessage("email", errorMsg);
+        fc.renderResponse();
+    }
+    
+    private void registerFail() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        
+        FacesMessage errorMsg = new FacesMessage(
+            FacesMessage.SEVERITY_ERROR,
+            msg.getString("accountRegisterError"),
             null
         );
         fc.addMessage("email", errorMsg);
@@ -88,6 +112,8 @@ public class Account {
     
     public AccountEntity getEntity() { return entity; }
     public void setEntity(AccountEntity entity) { this.entity = entity; }
+    
+    public void setMsg(ResourceBundle msg) { this.msg = msg; }
 
     public boolean isLogged() {  return entity.getFirstName() != null; }
 }
