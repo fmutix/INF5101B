@@ -16,6 +16,11 @@
         
         <div class="container">
             <h1>#{title}</h1>
+            
+            <h:panelGroup layout="block" 
+                          rendered="#{not empty facesContext.messageList}" >
+                <div class="alert alert-danger"><h:messages/></div>
+            </h:panelGroup>
 
             <ui:insert name="content">Placeholder</ui:insert>
             
