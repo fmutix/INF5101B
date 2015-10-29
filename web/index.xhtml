@@ -9,7 +9,11 @@
             <ui:param name="title" value="#{msg.indexTitle}"/>
             
             <ui:define name="content">
-                Index placeholder
+                <h2>#{msg.indexInfo}</h2>
+                <p><h:outputText value="#{msg.indexInfoContent}" escape="false"/></p>
+                
+                <h2>#{msg.indexMenu}</h2>
+                <!-- TODO display menu (food, drinks) from db -->
             </ui:define>
         </ui:decorate>
     </h:body>
