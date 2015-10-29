@@ -13,11 +13,6 @@
 
             <ui:define name="content">
                 <ui:include src="includes/supportForm.xhtml"/>
-                
-                <ui:fragment rendered="#{account.entity.role eq 'admin'}" >
-                    <hr/>
-                    <h:link value="#{msg.adminTitle}" outcome="admin/index"/>
-                </ui:fragment>
             </ui:define>
         </ui:decorate>
     </h:body>

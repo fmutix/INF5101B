@@ -18,6 +18,11 @@
             <h1>#{title}</h1>
 
             <ui:insert name="content">Placeholder</ui:insert>
+            
+            <ui:fragment rendered="#{account.entity.role eq 'admin'}" >
+                <hr/>
+                <h:link value="#{msg.adminTitle}" outcome="admin/index"/>
+            </ui:fragment>
         </div>
     </h:body>
 </html>
