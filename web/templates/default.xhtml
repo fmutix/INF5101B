@@ -19,7 +19,7 @@
 
             <ui:insert name="content">Placeholder</ui:insert>
             
-            <ui:fragment rendered="#{account.entity.role eq 'admin'}" >
+            <ui:fragment rendered="#{account.entity.isAdmin()}" >
                 <hr/>
                 <h:link value="#{msg.adminTitle}" outcome="admin/index"/>
             </ui:fragment>

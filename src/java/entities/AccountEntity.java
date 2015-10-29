@@ -58,7 +58,9 @@ public class AccountEntity implements Serializable {
     public void setPassword(String password) { this.password = password; }
     
     public String getRole() { return role; }
-    public void setRole(String group) { this.role = role; }
+    public void setRole(String role) { this.role = role; }
+    
+    public boolean isAdmin() { return role.equals(ROLE_ADMIN); }
 
     @Override
     public int hashCode() {

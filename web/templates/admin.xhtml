@@ -16,11 +16,11 @@
         
         <div class="container">
             <h1>#{msg.adminTitle} - #{title}</h1>
-            <ui:fragment rendered="#{account.entity.role eq 'admin'}" >
+            <ui:fragment rendered="#{account.entity.isAdmin()}" >
                 <ui:insert name="content">Placeholder</ui:insert>
             </ui:fragment>
             
-            <ui:fragment rendered="#{account.entity.role ne 'admin'}" >
+            <ui:fragment rendered="#{!account.entity.isAdmin()}" >
                 <div class="alert alert-danger">#{msg.errorNotAuthorized}</div>
             </ui:fragment>
         </div>
