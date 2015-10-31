@@ -2,14 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-	  xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
     <h:body>
 		<h:form role="form">
 		<div class="table-responsive">
-			<h:dataTable value="#{food.findAll()}" var="f" styleClass="table table-striped">
-			<h:column>
+        <h:dataTable value="#{food.findAll()}" var="f" styleClass="table table-striped">
+            <h:column>
 				<f:facet name="header">Nom</f:facet>
 				<h:outputText value="#{f.name}"/>
 			</h:column>
@@ -28,17 +27,12 @@
 			<h:column rendered="#{account.logged}">
 				<f:facet name="header">Ajouter</f:facet>
 				<h:commandButton class="btn btn-default" value="+" 
-								 action="#{food.addToCart(f)}"/>
+								 action="#{food.addToCart(f)}" />
 			</h:column>
 			<h:column rendered="#{account.logged}">
 				<f:facet name="header">Retirer</f:facet>
 				<h:commandButton class="btn btn-default" value="-" 
 								 action="#{food.removeFromCart(f)}"/>
-			</h:column>
-			<h:column rendered="#{account.logged}">
-				<f:facet name="header">Supprimer</f:facet>
-				<h:commandButton class="btn btn-default" value="&#10007;" 
-								 action="#{food.deleteFromCart(f)}"/>
 			</h:column>
 		</h:dataTable>
 		</div>

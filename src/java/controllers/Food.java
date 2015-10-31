@@ -8,18 +8,14 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
-/**
- *
- * @author mute
- */
 @ManagedBean
 @ViewScoped
 public class Food {
 	
 	private List<FoodEntity> foodList;
 	
-	@ManagedProperty(value="#{cartBean}")
-	private CartBean cart = new CartBean();
+	@ManagedProperty(value="#{cart}")
+	private Cart cart = new Cart();
 	
 	@EJB private FoodRepository foodRepository;
 
@@ -44,14 +40,14 @@ public class Food {
 	/**
 	 * @return the cart
 	 */
-	public CartBean getCart() {
+	public Cart getCart() {
 		return cart;
 	}
 
 	/**
 	 * @param cart the cart to set
 	 */
-	public void setCart(CartBean cart) {
+	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
 }
