@@ -2,6 +2,7 @@ package controllers;
 
 import entities.FoodEntity;
 import java.util.HashMap;
+import java.util.Map.Entry;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -42,5 +43,16 @@ public class CartBean {
 	
 	public void delete(FoodEntity food) {
 		getFoodList().remove(food);
+	}
+	
+	public double getTotal() {
+		double total = 0.0;
+		
+		for (Entry<FoodEntity, Integer> entry : getFoodList().entrySet()) {
+			double price = entry.getKey().getPrice();
+			int quantity = entry.getValue();
+			total += price * quantity;
+		}
+		return total;
 	}
 }

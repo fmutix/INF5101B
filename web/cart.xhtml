@@ -23,22 +23,27 @@
 					<h:column>
 						<f:facet name="header">Nom</f:facet>
 						<h:outputText value="#{f.key.name}"/>
+						<f:facet name="footer">Total</f:facet>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Type</f:facet>
 						<h:outputText value="#{f.key.type}"/>
+						<f:facet name="footer"></f:facet>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Description</f:facet>
 						<h:outputText value="#{f.key.description}"/>
+						<f:facet name="footer"></f:facet>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Prix</f:facet>
 						<h:outputText value="#{f.key.price}"/>
+						<f:facet name="footer">#{cartBean.total}</f:facet>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Quantité</f:facet>
 						<h:outputText value="#{f.value}"/>
+						<f:facet name="footer"></f:facet>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Retirer</f:facet>
