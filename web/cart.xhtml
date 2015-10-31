@@ -19,7 +19,7 @@
             <ui:define name="content">
 				<h:form role="form">
 				<div class="table-responsive">
-					<h:dataTable value="#{cartBean.foodList.entrySet().toArray()}" var="f" styleClass="table table-striped">
+					<h:dataTable value="#{cart.foodList.entrySet().toArray()}" var="f" styleClass="table table-striped">
 					<h:column>
 						<f:facet name="header">Nom</f:facet>
 						<h:outputText value="#{f.key.name}"/>
@@ -38,7 +38,7 @@
 					<h:column>
 						<f:facet name="header">Prix</f:facet>
 						<h:outputText value="#{f.key.price}"/>
-						<f:facet name="footer">#{cartBean.total}</f:facet>
+						<f:facet name="footer">#{cart.total}</f:facet>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Quantité</f:facet>
@@ -48,12 +48,12 @@
 					<h:column>
 						<f:facet name="header">Retirer</f:facet>
 						<h:commandButton class="btn btn-default" value="-" 
-										 action="#{cartBean.remove(f.key)}"/>
+										 action="#{cart.remove(f.key)}"/>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Supprimer</f:facet>
 						<h:commandButton class="btn btn-default" value="&#10007;" 
-										 action="#{cartBean.delete(f.key)}"/>
+										 action="#{cart.delete(f.key)}"/>
 					</h:column>
 					</h:dataTable>
 				</div>

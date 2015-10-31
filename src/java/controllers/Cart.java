@@ -8,14 +8,11 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class CartBean {
+public class Cart {
 	
 	private HashMap<FoodEntity, Integer> foodList = new HashMap<>();
 
-	/**
-	 * Creates a new instance of CartBean
-	 */
-	public CartBean() {}
+	public Cart() {}
 	
 	public HashMap<FoodEntity, Integer> getFoodList() {
 		return foodList;

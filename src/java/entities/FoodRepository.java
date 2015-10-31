@@ -23,7 +23,7 @@ public class FoodRepository {
         CriteriaQuery<FoodEntity> cq = cb.createQuery(FoodEntity.class);
         Root<FoodEntity> root = cq.from(FoodEntity.class);
         cq.select(root);
-        cq.orderBy(cb.desc(root.get("type")));
+        cq.orderBy(cb.asc(root.get("type")));
         Query q = em.createQuery(cq);
         
         return q.getResultList();
