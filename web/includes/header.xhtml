@@ -22,6 +22,7 @@
                                     <li><h:link value="#{msg.register}" outcome="/register"/></li>
                                 </ui:fragment>
                                 <ui:fragment rendered="#{account.logged}">
+									<li><h:link outcome="cart"><span class="glyphicon glyphicon-shopping-cart"></span></h:link></li>
                                     <li><h:commandLink value="#{msg.logout}" action="#{account.logout()}"/></li>
                                 </ui:fragment>
                             </ul>

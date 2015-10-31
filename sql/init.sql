@@ -6,3 +6,39 @@ INSERT INTO ACCOUNTS(EMAIL,FIRSTNAME,LASTNAME,PASSWORD,PHONE,ROLE) VALUES(
     '0',
     'admin'
 );
+
+INSERT INTO FOODS (Name, Type, Description, Price) VALUES (
+	'Simple burger',
+	'Burger',
+	'Pain burger, 1 steak haché',
+	3.70
+);
+
+INSERT INTO	FOODS (Name, Type, Description, Price) VALUES (
+	'Double burger',
+	'Burger',
+	'Pain burger, 2 steak hachés',
+	5.00
+);
+
+INSERT INTO	FOODS (Name, Type, Description, Price) VALUES (
+	'Burger savoyard',
+	'Burger',
+	'Pain burger, 1 steak haché, galettes de pomme de terre, fromage cheddar ou raclette',
+	5.00
+);
+
+INSERT INTO	FOODS (Name, Type, Description, Price) VALUES (
+	'Simple américain',
+	'Sandwich',
+	'Demi-baguette, 1 steak haché',
+	3.70
+);
+	
+INSERT INTO	FOODS (Name, Type, Description, Price) VALUES (
+	'Double américain',
+	'Sandwich',
+	'Demi-baguette, 2 steak haché',
+	5.00
+);
+

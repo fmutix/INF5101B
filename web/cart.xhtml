@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<h:head>
+        <title>#{msg.title} - #{title}</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"/>
+    </h:head>
+	
+    <h:body>
+		<ui:decorate template="templates/default.xhtml">
+            <ui:param name="title" value="#{msg.indexTitle}"/>
+            
+            <ui:define name="content">
+				<h:form role="form">
+				<div class="table-responsive">
+					<h:dataTable value="#{cartBean.foodList.entrySet().toArray()}" var="f" styleClass="table table-striped">
+					<h:column>
+						<f:facet name="header">Nom</f:facet>
+						<h:outputText value="#{f.key.name}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Type</f:facet>
+						<h:outputText value="#{f.key.type}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Description</f:facet>
+						<h:outputText value="#{f.key.description}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Prix</f:facet>
+						<h:outputText value="#{f.key.price}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Quantité</f:facet>
+						<h:outputText value="#{f.value}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Retirer</f:facet>
+						<h:commandButton class="btn btn-default" value="-" 
+										 action="#{cartBean.remove(f.key)}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Supprimer</f:facet>
+						<h:commandButton class="btn btn-default" value="&#10007;" 
+										 action="#{cartBean.delete(f.key)}"/>
+					</h:column>
+					</h:dataTable>
+				</div>
+				</h:form>
+            </ui:define>
+		</ui:decorate>
+    </h:body>
+</html>
