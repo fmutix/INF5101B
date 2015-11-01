@@ -17,7 +17,7 @@ public class OrderRepository{
 	@PersistenceContext
     private EntityManager em;
 
-	public List<MessageEntity> findAll() {
+	public List<OrderEntity> findAll() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         
         CriteriaQuery<MessageEntity> cq = cb.createQuery(MessageEntity.class);

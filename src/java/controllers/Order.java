@@ -2,6 +2,7 @@ package controllers;
 
 import entities.OrderEntity;
 import entities.OrderRepository;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -27,6 +28,10 @@ public class Order {
 		orderEntity.setAccount(account.getEntity());
 		orderEntity.setCart(cart.getFoodList());
 		orderRepository.persist(orderEntity);
+	}
+	
+	public List<OrderEntity> getOrders() {
+		return orderRepository.findAll();
 	}
 	
 	public void setAccount(Account account) { this.account = account; }
