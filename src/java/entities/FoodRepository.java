@@ -33,6 +33,10 @@ public class FoodRepository {
         return em.merge(f);
     }
     
+    public void remove(FoodEntity f) {
+        em.remove(em.merge(f));
+    }
+    
     public void persist(FoodEntity f) {
         em.persist(f);
     }

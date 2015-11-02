@@ -1,5 +1,7 @@
 package controllers;
 
+import entities.FoodEntity;
+import entities.FoodRepository;
 import entities.OrderEntity;
 import javax.faces.bean.ManagedBean;
 import entities.OrderRepository;
@@ -11,6 +13,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class ShopAdm {
    
+    @EJB private FoodRepository foodRepository;
     @EJB private OrderRepository orderRepository;
     
     private OrderEntity order;
@@ -21,6 +24,10 @@ public class ShopAdm {
         order = o;
         
         return "orderDetails";
+    }
+    
+    public void removeFood(FoodEntity f) {
+        foodRepository.remove(f);
     }
 
     public List<OrderEntity> getOrders() { return orderRepository.findAll(); }
