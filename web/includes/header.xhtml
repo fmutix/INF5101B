@@ -15,6 +15,9 @@
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-left">
                                 <li><h:link value="#{msg.guestbookTitle}" outcome="/guestbook"/></li>
+                                <ui:fragment rendered="#{account.entity.isAdmin()}" >
+                                    <li><h:link value="#{msg.adminTitle}" outcome="/admin/index"/></li>
+                                </ui:fragment>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <ui:fragment rendered="#{!account.logged}" >
@@ -22,7 +25,7 @@
                                     <li><h:link value="#{msg.register}" outcome="/register"/></li>
                                 </ui:fragment>
                                 <ui:fragment rendered="#{account.logged}">
-									<li><h:link outcome="cart"><span class="glyphicon glyphicon-shopping-cart"></span></h:link></li>
+									<li><h:link outcome="/cart"><span class="glyphicon glyphicon-shopping-cart"></span></h:link></li>
                                     <li><h:commandLink value="#{msg.logout}" action="#{account.logout()}"/></li>
                                 </ui:fragment>
                             </ul>

@@ -23,11 +23,6 @@
             </h:panelGroup>
 
             <ui:insert name="content">Placeholder</ui:insert>
-            
-            <ui:fragment rendered="#{account.entity.isAdmin()}" >
-                <hr/>
-                <h:link value="#{msg.adminTitle}" outcome="admin/index"/>
-            </ui:fragment>
         </div>
     </h:body>
 </html>
