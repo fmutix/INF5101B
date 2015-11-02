@@ -7,3 +7,7 @@ nbactions.xml
 nb-configuration.xml
 .nb-gradle/
 subjects/
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
