@@ -11,7 +11,7 @@
                 <h:outputLabel for="email">
                     #{msg.accountEmail}:
                 </h:outputLabel>
-                <h:inputText id="email" class="form-control" 
+                <h:inputText id="email" class="form-control"
                              label="#{msg.accountEmail}"
                              value="#{account.entity.email}" required="true"/>
             </div>
@@ -25,10 +25,9 @@
                                value="#{account.entity.password}" required="true" />
             </div>
 
-            <h:commandButton class="btn btn-default" value="#{msg.send}" 
-                             action="#{account.login()}"/>            
+            <h:commandButton class="btn btn-default" value="#{msg.send}"
+                             action="#{account.login()}"/>
         </h:form>
     </ui:composition>
     </h:body>
 </html>
-

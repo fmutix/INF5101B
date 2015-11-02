@@ -13,43 +13,42 @@
                 <p>#{msg.shopOrderDetails} #{shopAdm.order.account.email}
                     (#{shopAdm.order.orderTime}).</p>
                 
-				<div class="table-responsive">
-                    <h:dataTable value="#{shopAdm.order.cartSet}" 
+                <div class="table-responsive">
+                    <h:dataTable value="#{shopAdm.order.cartSet}"
                                  var="f" styleClass="table table-striped">
                     <h:column>
                         <f:facet name="header">#{msg.accountEmail}</f:facet>
-						#{shopAdm.order.account.email}
-						<f:facet name="footer"></f:facet>
-					</h:column>
-					<h:column>
-						<f:facet name="header">#{msg.shopName}</f:facet>
-						#{f.key.name}
-						<f:facet name="footer">#{msg.shopTotal}</f:facet>
-					</h:column>
-					<h:column>
-						<f:facet name="header">#{msg.shopType}</f:facet>
-						#{f.key.type}
-						<f:facet name="footer"></f:facet>
-					</h:column>
-					<h:column>
+                        #{shopAdm.order.account.email}
+                        <f:facet name="footer"></f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.shopName}</f:facet>
+                        #{f.key.name}
+                        <f:facet name="footer">#{msg.shopTotal}</f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.shopType}</f:facet>
+                        #{f.key.type}
+                        <f:facet name="footer"></f:facet>
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">#{msg.shopDescription}</f:facet>
-						#{f.key.description}
-						<f:facet name="footer"></f:facet>
-					</h:column>
-					<h:column>
+                        #{f.key.description}
+                        <f:facet name="footer"></f:facet>
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">#{msg.shopPrice}</f:facet>
-						#{f.key.price}
-						<f:facet name="footer">#{shopAdm.order.total}</f:facet>
-					</h:column>
-					<h:column>
-						<f:facet name="header">#{msg.shopQuantity}</f:facet>
-						#{f.value}
-						<f:facet name="footer"></f:facet>
-					</h:column>
-					</h:dataTable>
-				</div>
+                        #{f.key.price}
+                        <f:facet name="footer">#{shopAdm.order.total}</f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.shopQuantity}</f:facet>
+                        #{f.value}
+                        <f:facet name="footer"></f:facet>
+                    </h:column>
+                    </h:dataTable>
+                </div>
             </ui:define>
         </ui:decorate>
     </h:body>
 </html>
-

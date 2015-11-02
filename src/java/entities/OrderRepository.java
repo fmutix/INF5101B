@@ -14,12 +14,12 @@ import javax.persistence.criteria.Root;
 @Stateless
 @LocalBean
 public class OrderRepository {
-	
-	@PersistenceContext
-	private EntityManager em;
+    
+    @PersistenceContext
+    private EntityManager em;
 
-	public List<OrderEntity> findAll() {
-		CriteriaBuilder cb = em.getCriteriaBuilder();
+    public List<OrderEntity> findAll() {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
         
         CriteriaQuery<OrderEntity> cq = cb.createQuery(OrderEntity.class);
         Root<OrderEntity> root = cq.from(OrderEntity.class);
@@ -28,10 +28,10 @@ public class OrderRepository {
         Query q = em.createQuery(cq);
         
         return q.getResultList();
-	}
-	
-	public void persist(OrderEntity o) {
+    }
+    
+    public void persist(OrderEntity o) {
         o.setOrderTime(new Date());
-		em.persist(o);
-	}
+        em.persist(o);
+    }
 }

@@ -4,57 +4,57 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-	
+    
     <h:body>
-		<ui:decorate template="templates/default.xhtml">
+        <ui:decorate template="templates/default.xhtml">
             <ui:param name="title" value="#{msg.shopCartTitle}"/>
             
             <ui:define name="content">
-				<h:form role="form">
-				<div class="table-responsive">
-                    <h:dataTable value="#{shop.order.cartSet}" 
+                <h:form role="form">
+                <div class="table-responsive">
+                    <h:dataTable value="#{shop.order.cartSet}"
                                  var="f" styleClass="table table-striped">
-					<h:column>
-						<f:facet name="header">#{msg.shopName}</f:facet>
-						#{f.key.name}
-						<f:facet name="footer">#{msg.shopTotal}</f:facet>
-					</h:column>
-					<h:column>
-						<f:facet name="header">#{msg.shopType}</f:facet>
-						#{f.key.type}
-						<f:facet name="footer"></f:facet>
-					</h:column>
-					<h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.shopName}</f:facet>
+                        #{f.key.name}
+                        <f:facet name="footer">#{msg.shopTotal}</f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.shopType}</f:facet>
+                        #{f.key.type}
+                        <f:facet name="footer"></f:facet>
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">#{msg.shopDescription}</f:facet>
-						#{f.key.description}
-						<f:facet name="footer"></f:facet>
-					</h:column>
-					<h:column>
+                        #{f.key.description}
+                        <f:facet name="footer"></f:facet>
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">#{msg.shopPrice}</f:facet>
-						#{f.key.price}
-						<f:facet name="footer">#{shop.order.total}</f:facet>
-					</h:column>
-					<h:column>
-						<f:facet name="header">#{msg.shopQuantity}</f:facet>
-						#{f.value}
-						<f:facet name="footer"></f:facet>
-					</h:column>
-					<h:column>
-						<f:facet name="header">#{msg.shopDecrease}</f:facet>
-						<h:commandButton class="btn btn-default" value="-" 
-										 action="#{shop.order.decrease(f.key)}"/>
-					</h:column>
-					<h:column>
+                        #{f.key.price}
+                        <f:facet name="footer">#{shop.order.total}</f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.shopQuantity}</f:facet>
+                        #{f.value}
+                        <f:facet name="footer"></f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.shopDecrease}</f:facet>
+                        <h:commandButton class="btn btn-default" value="-"
+                                         action="#{shop.order.decrease(f.key)}"/>
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">#{msg.shopRemove}</f:facet>
-						<h:commandButton class="btn btn-default" value="&#10007;" 
-										 action="#{shop.order.remove(f.key)}"/>
-					</h:column>
-					</h:dataTable>
-                    <h:commandButton class="btn btn-default" value="Valider" 
-								 action="#{shop.submitOrder()}"/>
-				</div>
-				</h:form>
+                        <h:commandButton class="btn btn-default" value="&#10007;"
+                                         action="#{shop.order.remove(f.key)}"/>
+                    </h:column>
+                    </h:dataTable>
+                    <h:commandButton class="btn btn-default" value="Valider"
+                                 action="#{shop.submitOrder()}"/>
+                </div>
+                </h:form>
             </ui:define>
-		</ui:decorate>
+        </ui:decorate>
     </h:body>
 </html>

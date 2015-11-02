@@ -13,12 +13,12 @@ import javax.persistence.criteria.Root;
 @Stateless
 @LocalBean
 public class FoodRepository {
-	
-	@PersistenceContext
-	private EntityManager em;
+    
+    @PersistenceContext
+    private EntityManager em;
 
-	public List<FoodEntity> findAll() {
-		CriteriaBuilder cb = em.getCriteriaBuilder();
+    public List<FoodEntity> findAll() {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
         
         CriteriaQuery<FoodEntity> cq = cb.createQuery(FoodEntity.class);
         Root<FoodEntity> root = cq.from(FoodEntity.class);
@@ -27,13 +27,13 @@ public class FoodRepository {
         Query q = em.createQuery(cq);
         
         return q.getResultList();
-	}
-	
-	public FoodEntity update(FoodEntity f) {
-		return em.merge(f);
-	}
-	
-	public void persist(FoodEntity f) {
-		em.persist(f);
-	}
+    }
+    
+    public FoodEntity update(FoodEntity f) {
+        return em.merge(f);
+    }
+    
+    public void persist(FoodEntity f) {
+        em.persist(f);
+    }
 }

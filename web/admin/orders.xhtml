@@ -11,30 +11,29 @@
             
             <ui:define name="content">
                 <h:form role="form">
-                <h:dataTable value="#{shopAdm.getOrders()}" 
+                <h:dataTable value="#{shopAdm.getOrders()}"
                                  var="o" styleClass="table table-striped">
-					<h:column>
-						<f:facet name="header">Id</f:facet>
-						#{o.id}
-					</h:column>
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        #{o.id}
+                    </h:column>
                     <h:column>
                         <f:facet name="header">#{msg.accountEmail}</f:facet>
                         #{o.account.email}
-					</h:column>
-					<h:column>
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">#{msg.shopDate}</f:facet>
                         #{o.orderTime}
-					</h:column>
-					<h:column>
-						<f:facet name="header">#{msg.shopDetails}</f:facet>
-						<h:commandButton class="btn btn-default" 
-                                         value="#{msg.shopDetails}" 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.shopDetails}</f:facet>
+                        <h:commandButton class="btn btn-default"
+                                         value="#{msg.shopDetails}"
                                          action= "#{shopAdm.orderDetails(o)}"/>
-					</h:column>
+                    </h:column>
                 </h:dataTable>
                 </h:form>
             </ui:define>
         </ui:decorate>
     </h:body>
 </html>
-

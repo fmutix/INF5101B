@@ -34,7 +34,7 @@ public class Account {
             if (!isLogged()) {
                     ExternalContext ec = FacesContext.getCurrentInstance()
                             .getExternalContext();
-                    ec.redirect("/tps/faces/login.xhtml");    
+                    ec.redirect("/tps/faces/login.xhtml");
             }
         } catch (IOException ex) {
             throw new RuntimeException(ex);
@@ -42,12 +42,12 @@ public class Account {
     }
     
     /**
-     * Connects to an account using partial information stored in the account's 
+     * Connects to an account using partial information stored in the account's
      * entity (email).
      * @return index page if the login succeeded.
      */
     public String login() {
-        try {    
+        try {
             String email = entity.getEmail();
             String pwd = entity.getPassword();
             AccountEntity ae = accountRepository.login(email, pwd);

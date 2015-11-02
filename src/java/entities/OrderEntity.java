@@ -43,53 +43,53 @@ public class OrderEntity implements Serializable {
     @NotNull
     private Date orderTime;
     
-	public OrderEntity() {
+    public OrderEntity() {
         cart = new HashMap<>();
     }
     
-	public void add(FoodEntity food) {
-		if (!cart.containsKey(food)) {
-			cart.put(food, 1);
-		}
-		else {
-			cart.put(food, cart.get(food) + 1);
-		}
-	}
-	
-	public void decrease(FoodEntity food) {
-		if (cart.containsKey(food)) {
-			if (cart.get(food)-1 > 0) {
-				cart.put(food, cart.get(food) - 1);
-			}
-			else {
-				remove(food);
-			}
-		}
-	}
-	
-	public void remove(FoodEntity food) {
-		cart.remove(food);
-	}
+    public void add(FoodEntity food) {
+        if (!cart.containsKey(food)) {
+            cart.put(food, 1);
+        }
+        else {
+            cart.put(food, cart.get(food) + 1);
+        }
+    }
+    
+    public void decrease(FoodEntity food) {
+        if (cart.containsKey(food)) {
+            if (cart.get(food)-1 > 0) {
+                cart.put(food, cart.get(food) - 1);
+            }
+            else {
+                remove(food);
+            }
+        }
+    }
+    
+    public void remove(FoodEntity food) {
+        cart.remove(food);
+    }
     
     public int quantity(FoodEntity food) {
         if (!cart.containsKey(food)) { return 0; }
         
         return cart.get(food);
     }
-	
-	public double getTotal() {
-		double total = 0.0;
-		
-		for (Map.Entry<FoodEntity, Integer> entry : cart.entrySet()) {
-			double price = entry.getKey().getPrice();
-			int quantity = entry.getValue();
-			total += price * quantity;
-		}
-		return total;
-	}
     
-    public Set<Map.Entry<FoodEntity, Integer>> getCartSet() { 
-        return cart.entrySet(); 
+    public double getTotal() {
+        double total = 0.0;
+        
+        for (Map.Entry<FoodEntity, Integer> entry : cart.entrySet()) {
+            double price = entry.getKey().getPrice();
+            int quantity = entry.getValue();
+            total += price * quantity;
+        }
+        return total;
+    }
+    
+    public Set<Map.Entry<FoodEntity, Integer>> getCartSet() {
+        return cart.entrySet();
     }
 
     @Override

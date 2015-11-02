@@ -6,27 +6,27 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class FoodType {
-	
-	private String type = "Tout";
+    
+    private String type = "Tout";
 
-	/**
-	 * Creates a new instance of FoodType
-	 */
-	public FoodType() {
-	}
+    /**
+     * Creates a new instance of FoodType
+     */
+    public FoodType() {
+    }
 
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
 
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-	
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+    
 }
