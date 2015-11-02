@@ -1,0 +1,49 @@
+\section{Cahier des charges}
+
+Le site de E-Commerce développé utilise comme base un restaurateur réel qui
+vend des sandwich et des burgers. Notre équipe a décidé de créer un site
+E-Commerce en tant que service supplémentaire que pourrait proposer ce
+restaurateur. \\
+
+Le site propose aux utilisateurs de remplir un panier de courses avec les
+produits proposé par le restaurateur. Le site devra intégrer les
+fonctionnalités suivantes :
+
+\begin{itemize}
+	\item Gérer des comptes utilisateur
+	\item Gérer un panier de course dans la session utilisateur
+	\item Propose un service de Livre d'or où les utilisateurs peuvent écrire
+		des commentaires
+	\item Implémenter un panneau d'administration
+\end{itemize}
+
+La gestion des comptes comprend une inscription des utilisateurs dans la base
+de données à partir du site. Le site permet aussi aux utilisateurs de se
+connecter et de se déconnecter. \\
+
+Le panier de course n'est disponible qu'après la connexion d'un utilisateur. Il
+contient les produits qui ont été ajoutés par ce dernier. Un utilisateur peut
+ajouter, retirer des unités d'un produit ou supprimer complètement le produit
+du panier. Une page de visualisation du panier est disponible où il est
+possible de voir la liste des produits mis dans le panier avec leur quantité.
+Le prix total de course est indiqué au bas du tableau de produits. \\
+
+Le livre d'or est une page qui affiche tous les messages qui ont été laissé par
+les utilisateurs. Seulement un utilisateur connecté pourra laisser un message.
+A l'envoie du message, il sera enregistré dans la base de données avec la date
+d'envoie, le message et son auteur. \\
+
+Le panneau d'administation n'est accessible que par un compte avec un rôle
+administrateur. Ce panneau donne accès aux produits et aux commandes des
+clients présents dans la base de données. Les données sont présentées dans deux
+pages. Une première pour les produits et une deuxième pour les commandes. \\
+
+Sur la page des produits, tous les produits sont listés et plusieurs
+fonctionnalités sont proposées. L'administrateur peut supprimer un produit de
+la base de données ou au contraire en ajouter un nouveau à l'aide d'un
+formulaire présent sur la page. \\
+
+Pour la page des commandes, un historique de toutes les commandes y sont
+représentées. Elles sont définies par le nom du client et la date de commande.
+Sur chaque commande, il est possible de se rediriger vers une page plus
+détaillée de la commande où le contenu du panier qui a été fait est déroulé.
