@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:body>
+        <ui:decorate template="../templates/admin.xhtml">
+            <ui:param name="title" value="#{msg.adminOrderDetails}"/>
+            
+            <ui:define name="content">
+                <p>#{msg.shopOrderDetails} #{shopAdm.order.account.email}
+                    (#{shopAdm.order.orderTime}).</p>
+                
+				<div class="table-responsive">
+                    <h:dataTable value="#{shopAdm.order.cartSet}" 
+                                 var="f" styleClass="table table-striped">
+                    <h:column>
+                        <f:facet name="header">#{msg.accountEmail}</f:facet>
+						#{shopAdm.order.account.email}
+						<f:facet name="footer"></f:facet>
+					</h:column>
+					<h:column>
+						<f:facet name="header">#{msg.shopName}</f:facet>
+						#{f.key.name}
+						<f:facet name="footer">#{msg.shopTotal}</f:facet>
+					</h:column>
+					<h:column>
+						<f:facet name="header">#{msg.shopType}</f:facet>
+						#{f.key.type}
+						<f:facet name="footer"></f:facet>
+					</h:column>
+					<h:column>
+                        <f:facet name="header">#{msg.shopDescription}</f:facet>
+						#{f.key.description}
+						<f:facet name="footer"></f:facet>
+					</h:column>
+					<h:column>
+                        <f:facet name="header">#{msg.shopPrice}</f:facet>
+						#{f.key.price}
+						<f:facet name="footer">#{shopAdm.order.total}</f:facet>
+					</h:column>
+					<h:column>
+						<f:facet name="header">#{msg.shopQuantity}</f:facet>
+						#{f.value}
+						<f:facet name="footer"></f:facet>
+					</h:column>
+					</h:dataTable>
+				</div>
+            </ui:define>
+        </ui:decorate>
+    </h:body>
+</html>
+

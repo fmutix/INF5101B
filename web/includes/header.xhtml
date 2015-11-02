@@ -16,7 +16,14 @@
                             <ul class="nav navbar-nav navbar-left">
                                 <li><h:link value="#{msg.guestbookTitle}" outcome="/guestbook"/></li>
                                 <ui:fragment rendered="#{account.entity.isAdmin()}" >
-                                    <li><h:link value="#{msg.adminTitle}" outcome="/admin/index"/></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+                                           role="button" aria-haspopup="true" 
+                                           aria-expanded="false">#{msg.adminTitle}<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                          <li><h:link value="#{msg.adminOrders}" outcome="/admin/orders"/></li>
+                                        </ul>
+                                    </li>
                                 </ui:fragment>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">

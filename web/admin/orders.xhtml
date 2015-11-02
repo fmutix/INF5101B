@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:body>
+        <ui:decorate template="../templates/admin.xhtml">
+            <ui:param name="title" value="#{msg.adminOrders}"/>
+            
+            <ui:define name="content">
+                <h:form role="form">
+                <h:dataTable value="#{shopAdm.getOrders()}" 
+                                 var="o" styleClass="table table-striped">
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						#{o.id}
+					</h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg.accountEmail}</f:facet>
+                        #{o.account.email}
+					</h:column>
+					<h:column>
+                        <f:facet name="header">#{msg.shopDate}</f:facet>
+                        #{o.orderTime}
+					</h:column>
+					<h:column>
+						<f:facet name="header">#{msg.shopDetails}</f:facet>
+						<h:commandButton class="btn btn-default" 
+                                         value="#{msg.shopDetails}" 
+                                         action= "#{shopAdm.orderDetails(o)}"/>
+					</h:column>
+                </h:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:decorate>
+    </h:body>
+</html>
+
