@@ -10,28 +10,28 @@
         <h:dataTable value="#{shop.getFoodList()}" var="f" 
                      styleClass="table table-striped">
             <h:column>
-				<f:facet name="header">Nom</f:facet>
+				<f:facet name="header">#{msg.shopName}</f:facet>
 				<h:outputText value="#{f.name}"/>
 			</h:column>
 			<h:column>
-				<f:facet name="header">Type</f:facet>
+                <f:facet name="header">#{msg.shopType}</f:facet>
 				<h:outputText value="#{f.type}"/>
 			</h:column>
 			<h:column>
-				<f:facet name="header">Description</f:facet>
+                <f:facet name="header">#{msg.shopDescription}</f:facet>
 				<h:outputText value="#{f.description}"/>
 			</h:column>
 			<h:column>
-				<f:facet name="header">Prix</f:facet>
+                <f:facet name="header">#{msg.shopPrice}</f:facet>
 				<h:outputText value="#{f.price}"/>
 			</h:column>
 			<h:column rendered="#{account.logged}">
-				<f:facet name="header">Ajouter</f:facet>
+				<f:facet name="header">#{msg.shopAdd}</f:facet>
 				<h:commandButton class="btn btn-default" value="+" 
                                  action="#{shop.order.add(f)}" />
 			</h:column>
 			<h:column rendered="#{account.logged}">
-				<f:facet name="header">Retirer</f:facet>
+				<f:facet name="header">#{msg.shopDecrease}</f:facet>
 				<h:commandButton class="btn btn-default" value="-" 
 								 action="#{shop.order.decrease(f)}"/>
 			</h:column>

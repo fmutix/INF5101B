@@ -14,7 +14,7 @@
 	
     <h:body>
 		<ui:decorate template="templates/default.xhtml">
-            <ui:param name="title" value="#{msg.indexTitle}"/>
+            <ui:param name="title" value="#{msg.shopCartTitle}"/>
             
             <ui:define name="content">
 				<h:form role="form">
@@ -22,37 +22,37 @@
                     <h:dataTable value="#{shop.order.cart}" 
                                  var="f" styleClass="table table-striped">
 					<h:column>
-						<f:facet name="header">Nom</f:facet>
+						<f:facet name="header">#{msg.shopName}</f:facet>
 						<h:outputText value="#{f.key.name}"/>
-						<f:facet name="footer">Total</f:facet>
+						<f:facet name="footer">#{msg.shopTotal}</f:facet>
 					</h:column>
 					<h:column>
-						<f:facet name="header">Type</f:facet>
+						<f:facet name="header">#{msg.shopType}</f:facet>
 						<h:outputText value="#{f.key.type}"/>
 						<f:facet name="footer"></f:facet>
 					</h:column>
 					<h:column>
-						<f:facet name="header">Description</f:facet>
+                        <f:facet name="header">#{msg.shopDescription}</f:facet>
 						<h:outputText value="#{f.key.description}"/>
 						<f:facet name="footer"></f:facet>
 					</h:column>
 					<h:column>
-						<f:facet name="header">Prix</f:facet>
+                        <f:facet name="header">#{msg.shopPrice}</f:facet>
 						<h:outputText value="#{f.key.price}"/>
 						<f:facet name="footer">#{shop.order.total}</f:facet>
 					</h:column>
 					<h:column>
-						<f:facet name="header">Quantité</f:facet>
+						<f:facet name="header">#{msg.shopQuantity}</f:facet>
 						<h:outputText value="#{f.value}"/>
 						<f:facet name="footer"></f:facet>
 					</h:column>
 					<h:column>
-						<f:facet name="header">Retirer</f:facet>
+						<f:facet name="header">#{msg.shopDecrease}</f:facet>
 						<h:commandButton class="btn btn-default" value="-" 
 										 action="#{shop.order.decrease(f.key)}"/>
 					</h:column>
 					<h:column>
-						<f:facet name="header">Supprimer</f:facet>
+                        <f:facet name="header">#{msg.shopRemove}</f:facet>
 						<h:commandButton class="btn btn-default" value="&#10007;" 
 										 action="#{shop.order.remove(f.key)}"/>
 					</h:column>
