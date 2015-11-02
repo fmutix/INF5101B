@@ -1,6 +1,6 @@
 all: main.pdf
 
-main.pdf: *.tex
+main.pdf: *.tex res/*.png
 	pdflatex main.tex
 	pdflatex main.tex
 
