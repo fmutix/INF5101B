@@ -80,7 +80,16 @@
 
 \begin{document}
 \maketitle
+\strut\thispagestyle{empty}
+
+% Laisse page blanche pour verso page de garde %
 \newpage
+\strut\thispagestyle{empty}
+\newpage
+\tableofcontents
+\strut\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
 
 \input{specifications.tex}
 
