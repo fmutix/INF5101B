@@ -35,6 +35,12 @@ public class OrderEntity {
 	public void remove(FoodEntity food) {
 		cart.remove(food);
 	}
+    
+    public int quantity(FoodEntity food) {
+        if (!cart.containsKey(food)) { return 0; }
+        
+        return cart.get(food);
+    }
 	
 	public double getTotal() {
 		double total = 0.0;
@@ -50,4 +56,5 @@ public class OrderEntity {
     public Set<Entry<FoodEntity, Integer>> getCart() { 
         return cart.entrySet(); 
     }
+    
 }

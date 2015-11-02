@@ -30,11 +30,21 @@
 				<h:commandButton class="btn btn-default" value="+" 
                                  action="#{shop.order.add(f)}" />
 			</h:column>
+            <h:column rendered="#{account.logged}">
+                <f:facet name="header">#{msg.shopQuantity}</f:facet>
+                <h:outputText value="#{shop.order.quantity(f)}"/>
+                <f:facet name="footer"></f:facet>
+            </h:column>
 			<h:column rendered="#{account.logged}">
 				<f:facet name="header">#{msg.shopDecrease}</f:facet>
 				<h:commandButton class="btn btn-default" value="-" 
 								 action="#{shop.order.decrease(f)}"/>
 			</h:column>
+            <h:column rendered="#{account.logged}">
+                <f:facet name="header">#{msg.shopRemove}</f:facet>
+                <h:commandButton class="btn btn-default" value="&#10007;" 
+                                 action="#{shop.order.remove(f)}"/>
+            </h:column>
 		</h:dataTable>
 		</div>
 		</h:form>
