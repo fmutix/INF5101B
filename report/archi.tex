@@ -59,3 +59,15 @@ annotation permet de gérer le cycle de vie d'un \hl{EntityManager} JPA
     \item[MessageEntity] message du livre d'or
     \item[OrderEntity] commande
 \end{description}
+
+\section{Gestion des comptes \& rôles}
+
+Les rôles sont gérés simplement à l'aide d'une chaîne de caractères stockée dans
+le compte de l'utilisateur. Pour nos besoins, nous n'avions besoin que de deux
+rôles: utilisateur (\hl{ROLE\_USER}) et administrateur (\hl{ROLE\_ADMIN}).\\
+
+La gestion des accès aux pages se fait donc à l'aide d'une vérification de cette
+chaîne de caractère. Une autre méthode aurait été de se servir d'un JDBC realm
+et de la gestion des groupes fournit par J2EE, cela semblait cependant peu
+flexible et aurait complexifié l'application (e.g. fichiers de configurations,
+conventions à suivre pour les noms de colonnes dans les tables).
