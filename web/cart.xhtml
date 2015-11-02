@@ -19,7 +19,7 @@
             <ui:define name="content">
 				<h:form role="form">
 				<div class="table-responsive">
-                    <h:dataTable value="#{shop.order.cart}" 
+                    <h:dataTable value="#{shop.order.cartSet}" 
                                  var="f" styleClass="table table-striped">
 					<h:column>
 						<f:facet name="header">#{msg.shopName}</f:facet>
@@ -57,6 +57,8 @@
 										 action="#{shop.order.remove(f.key)}"/>
 					</h:column>
 					</h:dataTable>
+                    <h:commandButton class="btn btn-default" value="Valider" 
+								 action="#{shop.submitOrder()}"/>
 				</div>
 				</h:form>
             </ui:define>
