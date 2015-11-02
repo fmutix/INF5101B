@@ -23,27 +23,27 @@
                                  var="f" styleClass="table table-striped">
 					<h:column>
 						<f:facet name="header">#{msg.shopName}</f:facet>
-						<h:outputText value="#{f.key.name}"/>
+						#{f.key.name}
 						<f:facet name="footer">#{msg.shopTotal}</f:facet>
 					</h:column>
 					<h:column>
 						<f:facet name="header">#{msg.shopType}</f:facet>
-						<h:outputText value="#{f.key.type}"/>
+						#{f.key.type}
 						<f:facet name="footer"></f:facet>
 					</h:column>
 					<h:column>
                         <f:facet name="header">#{msg.shopDescription}</f:facet>
-						<h:outputText value="#{f.key.description}"/>
+						#{f.key.description}
 						<f:facet name="footer"></f:facet>
 					</h:column>
 					<h:column>
                         <f:facet name="header">#{msg.shopPrice}</f:facet>
-						<h:outputText value="#{f.key.price}"/>
+						#{f.key.price}
 						<f:facet name="footer">#{shop.order.total}</f:facet>
 					</h:column>
 					<h:column>
 						<f:facet name="header">#{msg.shopQuantity}</f:facet>
-						<h:outputText value="#{f.value}"/>
+						#{f.value}
 						<f:facet name="footer"></f:facet>
 					</h:column>
 					<h:column>

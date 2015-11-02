@@ -11,19 +11,19 @@
                      styleClass="table table-striped">
             <h:column>
 				<f:facet name="header">#{msg.shopName}</f:facet>
-				<h:outputText value="#{f.name}"/>
+				#{f.name}
 			</h:column>
 			<h:column>
                 <f:facet name="header">#{msg.shopType}</f:facet>
-				<h:outputText value="#{f.type}"/>
+				#{f.type}
 			</h:column>
 			<h:column>
                 <f:facet name="header">#{msg.shopDescription}</f:facet>
-				<h:outputText value="#{f.description}"/>
+				#{f.description}
 			</h:column>
 			<h:column>
                 <f:facet name="header">#{msg.shopPrice}</f:facet>
-				<h:outputText value="#{f.price}"/>
+				#{f.price}
 			</h:column>
 			<h:column rendered="#{account.logged}">
 				<f:facet name="header">#{msg.shopAdd}</f:facet>
@@ -32,7 +32,7 @@
 			</h:column>
             <h:column rendered="#{account.logged}">
                 <f:facet name="header">#{msg.shopQuantity}</f:facet>
-                <h:outputText value="#{shop.order.quantity(f)}"/>
+                #{shop.order.quantity(f)}
                 <f:facet name="footer"></f:facet>
             </h:column>
 			<h:column rendered="#{account.logged}">
