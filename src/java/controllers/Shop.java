@@ -23,7 +23,6 @@ public class Shop {
     @ManagedProperty(value="#{account}")
     private Account account;
     
-    @EJB private FoodRepository foodRepository;
     @EJB private OrderRepository orderRepository;
     
     private OrderEntity order;
@@ -57,7 +56,6 @@ public class Shop {
         fc.renderResponse();
     }
     
-    public List<FoodEntity> getFoodList() { return foodRepository.findAll(); }
     public OrderEntity getOrder() { return order; }
     
     public void setMsg(ResourceBundle msg) { this.msg = msg; }

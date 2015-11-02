@@ -10,9 +10,46 @@
             <ui:param name="title" value="#{msg.adminFood}"/>
             
             <ui:define name="content">
+            <h:form class="form-inline">
+                <div class="form-group">
+                    <h:outputLabel for="name">#{msg.shopName}</h:outputLabel>
+                    <h:inputText id="name" class="form-control"
+                                 label="#{msg.shopName}"
+                                 value="#{food.entity.name}" 
+                                 required="true"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="type">#{msg.shopType}</h:outputLabel>
+                    <h:inputText id="type" class="form-control"
+                                 label="#{msg.shopType}"
+                                 value="#{food.entity.type}" 
+                                 required="true"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="description">#{msg.shopDescription}</h:outputLabel>
+                    <h:inputText id="description" class="form-control"
+                                 label="#{msg.shopDescription}"
+                                 value="#{food.entity.description}" 
+                                 required="true"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="price">#{msg.shopPrice}</h:outputLabel>
+                    <h:inputText id="price" class="form-control"
+                                 label="#{msg.shopPrice}"
+                                 value="#{food.entity.price}" 
+                                 required="true"/>
+                </div>
+
+                <h:commandButton class="btn btn-default" value="#{msg.send}" 
+                                 action="#{food.saveFood()}"/>
+            </h:form>
+
             <h:form role="form">
             <div class="table-responsive">
-            <h:dataTable value="#{shop.getFoodList()}" var="f"
+            <h:dataTable value="#{food.getFoodList()}" var="f"
                          styleClass="table table-striped">
                 <h:column>
                     <f:facet name="header">#{msg.shopName}</f:facet>
