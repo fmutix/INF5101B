@@ -57,7 +57,7 @@ public class Account {
             }
             
             setEntity(ae);
-            return "index";
+            return "/index";
         } catch(EJBException nre) {
             loginFail();
         }
@@ -70,13 +70,13 @@ public class Account {
             .getExternalContext()
             .invalidateSession();
 
-        return "index?faces-redirect=true";
+        return "/index?faces-redirect=true";
     }
     
     public String register() {
         try {
             accountRepository.persist(entity);
-            return "index";
+            return "/index";
         } catch(EJBException ejbe) {
             FacesContext.getCurrentInstance()
                 .getExternalContext()
