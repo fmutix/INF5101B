@@ -1,0 +1,61 @@
+\section{Description de l'architecture}
+
+Le projet est divisé en 3 parties: les vues, les contrôleurs, et la logique
+métier.\\
+
+\section{Vues}
+
+Les vues sont gérées par les Facelets de JSF. Celles-ci peuvent entre autrex
+remplir les attributs contenus dans les ManagedBeans à l'aide de formulaires.
+
+\section{Contrôleurs}
+
+Les contrôleurs sont des Managed Bean JSF, ceux-ci font le lien entre les
+Facelets et les entités. Par exemple la Managed Bean \hl{Account} possède une
+instance de \hl{AccountEntity}. Cette instance sera remplie lorsqu'un visiteur
+renseignera un des formulaires appropriés (i.e. loginForm, regstrationForm).
+Ces classes contiennent également des méthodes renvoyant une String correspondant
+au nom d'une page à afficher en fonction d'un événement (e.g. si un utilisateur
+réussit à se connecter à son compte, il est redirigé vers la page d'accueil,
+sinon le formulaire de connexion est rechargé avec un message d'erreur
+personnalisé).\\
+
+\begin{description}
+    \item[Account] connexion, déconnexion, enregistrement d'un utilisateur
+    \item[Food] récupère la liste de nourriture, et ajout de nouveaux éléments
+    en passant par l'entité correspondante
+    \item[GuestBook] envoi et supression de messages sur le livre d'or
+    \item[Shop] envoi d'une commande
+    \item[ShopAdm] gestion des pages d'administration d'historique de commandes
+    et d'ajout de nourriture
+\end{description}
+
+\section{Modèles}
+
+Les modèles sont des \hl{entités}, c'est à dire des classes Java annotées afin
+d'être persistées en base de donnée par un ORM (JPA ici). Le rôle de l'ORM est
+de faire un lien entre l'application web qui manipule des objets, et la base de
+données qui manipule des tables et des colonnes. JPA permet également de
+construire des requêtes à partir d'objets et de méthodes, permettant ainsi de
+réutiliser et chaîner celles-ci. En effet, sans cela les requêtes étaient
+auparavant écrites directement souse form de chaînes de caractères, ce qui est
+peu maniable.\\
+
+Notre cas d'utilisation étant relativement simple, nous n'avons pas eu besoin
+de chaîner des requêtes. Nous avons cependant organisé le code de telle façon
+qu'ajouter des requêtes complexes puisse se faire facilement.\\
+
+A chaque entité est associé un \hl{Repository}, une classe contenant des méthodes
+pour manipuler l'entité associée, et notamment des requêtes formées à partir
+de JPA. Un \hl{Repository} est une \hl{LocalBean Stateless} afin d'avoir
+accès à une annotation en particulier: \hl{@PersistenceContext}. Cette
+annotation permet de gérer le cycle de vie d'un \hl{EntityManager} JPA
+(création et destruction) automatiquement, pas besoin donc de créer une
+\hl{EntityManagerFactory}.\\
+
+\begin{description}
+    \item[AccountEntity] compte utilisateur
+    \item[FoodEntity] nourriture
+    \item[MessageEntity] message du livre d'or
+    \item[OrderEntity] commande
+\end{description}
