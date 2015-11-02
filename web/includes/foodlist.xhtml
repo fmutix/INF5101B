@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:body>
+		<h:form role="form">
+		<div class="table-responsive">
+        <h:dataTable value="#{shop.getFoodList()}" var="f" 
+                     styleClass="table table-striped">
+            <h:column>
+				<f:facet name="header">#{msg.shopName}</f:facet>
+				#{f.name}
+			</h:column>
+			<h:column>
+                <f:facet name="header">#{msg.shopType}</f:facet>
+				#{f.type}
+			</h:column>
+			<h:column>
+                <f:facet name="header">#{msg.shopDescription}</f:facet>
+				#{f.description}
+			</h:column>
+			<h:column>
+                <f:facet name="header">#{msg.shopPrice}</f:facet>
+				#{f.price}
+			</h:column>
+			<h:column rendered="#{account.logged}">
+				<f:facet name="header">#{msg.shopAdd}</f:facet>
+				<h:commandButton class="btn btn-default" value="+" 
+                                 action="#{shop.order.add(f)}" />
+			</h:column>
+            <h:column rendered="#{account.logged}">
+                <f:facet name="header">#{msg.shopQuantity}</f:facet>
+                #{shop.order.quantity(f)}
+                <f:facet name="footer"></f:facet>
+            </h:column>
+			<h:column rendered="#{account.logged}">
+				<f:facet name="header">#{msg.shopDecrease}</f:facet>
+				<h:commandButton class="btn btn-default" value="-" 
+								 action="#{shop.order.decrease(f)}"/>
+			</h:column>
+            <h:column rendered="#{account.logged}">
+                <f:facet name="header">#{msg.shopRemove}</f:facet>
+                <h:commandButton class="btn btn-default" value="&#10007;" 
+                                 action="#{shop.order.remove(f)}"/>
+            </h:column>
+		</h:dataTable>
+		</div>
+		</h:form>
+	</h:body>
+</html>

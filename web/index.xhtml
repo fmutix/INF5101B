@@ -13,7 +13,16 @@
                 <p><h:outputText value="#{msg.indexInfoContent}" escape="false"/></p>
                 
                 <h2>#{msg.indexMenu}</h2>
-				<ui:include src="/includes/dashboard.xhtml"/>
+                <div class="alert alert-info" role="alert">
+                    <h:panelGroup layout="block" rendered="#{!account.logged}">
+                        #{msg.shopHint1}
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" rendered="#{account.logged}">
+                        #{msg.shopHint2}
+                    </h:panelGroup>
+                </div>
+                
+				<ui:include src="/includes/foodlist.xhtml"/>
             </ui:define>
         </ui:decorate>
     </h:body>
