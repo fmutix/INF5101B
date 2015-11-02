@@ -15,7 +15,7 @@ déconnexion.
 \end{figure}
 
 Pour s'inscrire, l'utilisateur doit remplir un formulaire qui va peupler la
-base de données. Le formulaire possèdent des validateurs d'expression pour
+base de données. Le formulaire possède des validateurs d'expression pour
 contrôler les données écrites par l'utilisateur.
 
 \begin{figure}[H]
@@ -25,7 +25,7 @@ contrôler les données écrites par l'utilisateur.
 	\label{fig:signup}
 \end{figure}
 
-Après la l'inscription ou une connexion, l'utilisateur est redirigé vers
+Après l'inscription ou une connexion, l'utilisateur est redirigé vers
 l'index où il pourra sélectionner des produits à mettre dans le panier.
 
 \begin{figure}[H]
@@ -36,9 +36,10 @@ l'index où il pourra sélectionner des produits à mettre dans le panier.
 \end{figure}
 
 Sur la figure \ref{fig:logged}, des boutons pour ajouter, retirer des unités ou
-supprimer des produits du panier sont affichées. Sur la page du panier, nous
+supprimer des produits du panier sont affichés. Sur la page du panier, nous
 retrouvons la liste des produits du panier et nous pouvons aussi retirer des
-unités ou des produits. Enfin, on peut envoyer la commande qui videra le panier.
+unités ou des produits. Enfin, on peut envoyer la commande au serveur qui
+videra le panier.
 
 \begin{figure}[H]
 	\centering
@@ -56,3 +57,26 @@ commentaires sur le site.
 	\caption{Livre d'or}
 	\label{fig:guestbook}
 \end{figure}
+
+Du côté administrateur, nous avons une interface de gestions des produits sur
+laquelle on peut supprimer ou ajouter des produits.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{res/ajout_burger.png} 
+	\includegraphics[width=0.4\textwidth]{res/ajout_burger2.png}
+	\caption{Administration des produits}
+	\label{fig:food_admin}
+\end{figure}
+
+Enfin, nous pouvons voir l'historique des commandes faites par les clients où
+il est aussi possible de voir le contenu des paniers commandés.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{res/admin_histo1.png} 
+	\includegraphics[width=0.4\textwidth]{res/admin_histo2.png}
+	\caption{Administration des commandes}
+	\label{fig:order_admin}
+\end{figure}
+
